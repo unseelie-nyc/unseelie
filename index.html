@@ -28,25 +28,26 @@
 
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      gap: 2vh;
+      gap: 1.5vh;
     }
 
-    /* BALANCED LOGO SIZE */
+    /* LOGO pinned near top */
+    header {
+      margin-top: 2vh; /* minimal gap from top */
+    }
     header img {
-      max-width: 40vw; /* slightly bigger than video */
+      max-width: 40vw; 
       height: auto;
-      flex-shrink: 0;
       cursor: pointer;
     }
 
-    /* PROPORTIONAL VIDEO */
+    /* VIDEO container */
     .video-container {
       max-width: 30vw; 
       width: 30vw;
       cursor: pointer;
-      flex-shrink: 0;
     }
     .video-container video {
       width: 100%;
@@ -55,31 +56,28 @@
       border: none;
     }
 
-    /* Caption aligns with video width */
+    /* Caption fits EXACTLY video width */
     .caption {
       width: 30vw;
-      margin: 0 auto;
-      font-size: 1.1em;
+      font-size: 1.2em;
       letter-spacing: 1.5px;
-      line-height: 1.4em;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     /* Links align with video width */
     footer {
       width: 30vw;
-      margin: 0 auto;
-      font-size: 0.8em;
+      font-size: 0.85em;
       letter-spacing: 1.5px;
+      margin-top: 0.5vh;
     }
-
     footer .social-links {
-      margin-top: 4px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 4px;
     }
-
     footer .social-links a {
       color: #eee;
       text-decoration: none;
@@ -92,8 +90,8 @@
     /* ARCHIVE HAMBURGER */
     .archive-menu {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 15px;
+      right: 15px;
     }
     .hamburger {
       cursor: pointer;
@@ -142,18 +140,20 @@
       pointer-events: none;
     }
 
-    /* TABLET BREAKPOINT */
+    /* TABLET */
     @media (max-width: 1024px) {
-      header img { max-width: 50vw; }
-      .video-container { max-width: 40vw; }
-      .caption, footer { width: 40vw; }
+      header img { max-width: 55vw; }
+      .video-container { max-width: 45vw; }
+      .caption, footer { width: 45vw; }
     }
 
-    /* MOBILE BREAKPOINT */
+    /* MOBILE */
     @media (max-width: 768px) {
-      header img { max-width: 70vw; }
-      .video-container { max-width: 60vw; }
-      .caption, footer { width: 60vw; }
+      header { margin-top: 1vh; }
+      header img { max-width: 80vw; }
+      .video-container { max-width: 75vw; }
+      .caption, footer { width: 75vw; font-size: 1em; }
+      .caption { white-space: normal; } /* allow wrap if super tiny screen */
     }
   </style>
 </head>
@@ -168,12 +168,12 @@
     </div>
     <div class="dropdown">
       <strong>Archive</strong>
-      <!-- Empty for now, will populate later -->
+      <!-- Empty for now -->
       <a href="#">Coming soon…</a>
     </div>
   </div>
 
-  <!-- LOGO → clickable back to home -->
+  <!-- LOGO → clickable -->
   <header>
     <a href="https://unseel.ie" target="_blank" rel="noopener">
       <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" draggable="false" />
@@ -188,7 +188,7 @@
     </video>
   </a>
 
-  <!-- CAPTION + LINKS aligned -->
+  <!-- CAPTION exactly under video edges -->
   <div class="caption">
     ஃ celebrating the timeless collective library of imagination ஃ
   </div>
