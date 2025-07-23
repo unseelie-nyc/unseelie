@@ -125,7 +125,7 @@
       position: relative;
     }
     header img {
-      max-width: 20vw; /* smaller so more fits on page */
+      max-width: 22vw; /* slightly larger logo now */
       height: auto;
       cursor: pointer;
       display: block;
@@ -136,7 +136,7 @@
       cursor: pointer;
       flex-shrink: 0;
       margin-top: 1vh;
-      width: 35vw; /* slightly smaller */
+      width: 35vw;
       max-width: 35vw;
     }
     .video-container video {
@@ -148,9 +148,9 @@
     .caption {
       margin-top: 1vh;
       font-size: 0.85em;
-      white-space: nowrap;
-      overflow: visible; /* never cut off text */
-      text-overflow: unset;
+      white-space: nowrap; /* single line by default */
+      overflow: hidden;
+      text-overflow: clip;
       width: 35vw;
       max-width: 35vw;
       margin-left: auto;
@@ -197,24 +197,26 @@
       pointer-events: none;
     }
 
-    /* ✅ MOBILE: video nearly full width, caption fits */
+    /* ✅ MOBILE: keep caption single line by making it smaller */
     @media (max-width: 1024px) {
       header {
-        margin-top: 5vh; /* allow some breathing room */
+        margin-top: 5vh;
       }
       header img {
         max-width: 60vw; /* smaller logo on mobile */
       }
       .video-container {
-        width: 95vw; /* almost edge-to-edge video */
+        width: 95vw; /* nearly edge-to-edge video */
         max-width: 95vw;
         margin-top: 2vh;
       }
       .caption {
         width: 95vw;
         max-width: 95vw;
-        font-size: 0.9em; /* slightly larger for readability */
-        white-space: normal; /* allow wrapping so it NEVER cuts */
+        font-size: 0.7em; /* smaller so it fits on one line */
+        white-space: nowrap; /* force single line */
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       footer {
         font-size: 0.5em;
@@ -229,10 +231,12 @@
         max-width: 65vw; 
       }
       .caption {
-        font-size: 0.85em;
+        font-size: 0.65em; /* even smaller on very narrow screens */
         width: 95vw;
         max-width: 95vw;
-        white-space: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   </style>
