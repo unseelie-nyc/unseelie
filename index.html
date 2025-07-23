@@ -69,7 +69,7 @@
       position: relative;
     }
 
-    /* ✅ Custom cursor (with fallback) */
+    /* ✅ Custom cursor */
     html, body, * {
       cursor: url("media/unseelie/mouse.cur") 0 0, url("media/unseelie/mouse.png") 0 0, auto !important;
     }
@@ -125,7 +125,7 @@
 
     /* ✅ Desktop layout */
     header {
-      margin-top: 3vh; /* bump upward so all fits */
+      margin-top: 3vh;
       flex-shrink: 0;
       width: 100%;
       display: flex;
@@ -133,7 +133,7 @@
       position: relative;
     }
     header img {
-      max-width: 22vw; /* slightly larger logo now */
+      max-width: 22vw;
       height: auto;
       cursor: pointer;
       display: block;
@@ -156,7 +156,7 @@
     .caption {
       margin-top: 1vh;
       font-size: 0.85em;
-      white-space: nowrap; /* single line by default */
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: clip;
       width: 35vw;
@@ -172,11 +172,17 @@
       font-size: 0.55em;
       letter-spacing: 1px;
     }
+
+    /* ✅ Desktop footer matches video width */
     footer .social-links {
+      width: 35vw;            /* align width to video */
+      max-width: 35vw;
+      margin-left: auto;
+      margin-right: auto;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 3px;
+      justify-content: space-between; /* stretch links evenly */
+      text-align: center;
     }
     footer .social-links a {
       color: #eee;
@@ -211,23 +217,30 @@
         margin-top: 5vh;
       }
       header img {
-        max-width: 60vw; /* smaller logo on mobile */
+        max-width: 60vw;
       }
       .video-container {
-        width: 95vw; /* nearly edge-to-edge video */
+        width: 95vw;
         max-width: 95vw;
         margin-top: 2vh;
       }
       .caption {
         width: 95vw;
         max-width: 95vw;
-        font-size: 0.7em; /* smaller so it fits on one line */
+        font-size: 0.7em;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
       footer {
         font-size: 0.5em;
+      }
+      /* Mobile footer stays full width + centered links */
+      footer .social-links {
+        width: 95vw;
+        max-width: 95vw;
+        justify-content: center;
+        gap: 3px;
       }
       .tap-text {
         margin-top: 2vh;
