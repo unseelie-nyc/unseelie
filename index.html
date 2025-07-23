@@ -62,6 +62,7 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      position: relative;
     }
 
     /* HAMBURGER LOCKED TOP-RIGHT */
@@ -70,6 +71,7 @@
       top: 10px;
       right: 10px;
       z-index: 9999;
+      user-select: none;
     }
     .archive-menu .hamburger {
       cursor: pointer;
@@ -120,9 +122,10 @@
       display: flex;
       justify-content: center;
       position: relative;
+      z-index: 1; /* below hamburger */
     }
     header img {
-      max-width: 50vw; /* desktop logo size */
+      max-width: 55vw; /* 10% bigger than previous 50vw */
       height: auto;
       cursor: pointer;
       display: block;
@@ -147,13 +150,14 @@
     /* CAPTION */
     .caption {
       margin-top: 0.8vh;
-      font-size: 1.1em;
+      font-size: 1.05em; /* smaller to fit one line */
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: clip;
+      text-overflow: ellipsis;
       max-width: 40vw;
       margin-left: auto;
       margin-right: auto;
+      user-select: none;
     }
 
     /* SOCIAL LINKS */
@@ -181,6 +185,7 @@
       font-size: 0.55em;
       letter-spacing: 1px;
       animation: glow 1.5s ease-in-out infinite alternate;
+      user-select: none;
     }
     @keyframes glow {
       from { opacity: 0.6; }
@@ -199,14 +204,14 @@
     /* MOBILE FIXES */
     @media (max-width: 768px) {
       header img {
-        max-width: 63vw; /* 70% of previous 90vw */
+        max-width: 69.3vw; /* 10% larger than previous 63vw */
       }
       .video-container {
         width: 92vw;
         max-width: 92vw;
       }
       .caption {
-        font-size: 1em;
+        font-size: 0.95em;
         width: 92vw;
         white-space: nowrap;
         max-width: 92vw;
@@ -222,10 +227,10 @@
     /* TINY PHONES */
     @media (max-width: 400px) {
       header img {
-        max-width: 70vw;
+        max-width: 75vw;
       }
       .caption {
-        font-size: 0.95em;
+        font-size: 0.9em;
       }
     }
   </style>
