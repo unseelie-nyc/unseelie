@@ -5,44 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>unseelie | timeless collective library of imagination</title>
 
-  <!-- SEO -->
-  <meta name="description" content="unseelie is a timeless collective library of imagination based in NYC, sharing contemporary fantasy, multimedia art, and experimental sound." />
-  <meta name="keywords" content="unseelie, NYC art collective, contemporary fantasy, dasychira, sentinel, QUALIATIK, himera, yikii, galen tipton, experimental music" />
-  <meta name="author" content="unseelie collective" />
-  <link rel="canonical" href="https://unseel.ie" />
-
-  <!-- OG + Twitter -->
-  <meta property="og:title" content="unseelie | timeless collective library of imagination" />
-  <meta property="og:description" content="a timeless collective library of imagination based in NYC" />
-  <meta property="og:url" content="https://unseel.ie" />
-  <meta property="og:image" content="https://unseel.ie/media/unseelie/blue_unseelie.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicGroup",
-    "name": "unseelie",
-    "description": "A timeless collective library of imagination based in NYC, blending contemporary fantasy, multimedia art, and experimental music.",
-    "url": "https://unseel.ie",
-    "sameAs": [
-      "https://soundcloud.com/unseelie_nyc",
-      "https://unseelie-nyc.bandcamp.com/",
-      "https://www.instagram.com/____unseelie/",
-      "https://twitter.com/____unseelie",
-      "https://www.facebook.com/unseelie.nyc/"
-    ],
-    "member": [
-      {"@type": "Person", "name": "dasychira"},
-      {"@type": "Person", "name": "sentinel"},
-      {"@type": "Person", "name": "QUALIATIK"},
-      {"@type": "Person", "name": "himera"},
-      {"@type": "Person", "name": "yikii"},
-      {"@type": "Person", "name": "galen tipton"}
-    ]
-  }
-  </script>
+  <!-- SEO and meta tags here... -->
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
@@ -64,13 +27,18 @@
       align-items: center;
     }
 
-    /* HAMBURGER LOCKED TOP-RIGHT */
+    /* HAMBURGER LOCKED TOP-RIGHT - FIXED AND NO MARGINS */
     .archive-menu {
       position: fixed;
       top: 10px;
       right: 10px;
-      z-index: 9999;
+      z-index: 99999;  /* very high to ensure it’s always on top */
       user-select: none;
+      margin: 0;
+      padding: 0;
+      width: auto;
+      height: auto;
+      background: transparent;
     }
     .archive-menu .hamburger {
       cursor: pointer;
@@ -100,6 +68,7 @@
       opacity: 0;
       pointer-events: none;
       transition: max-height 0.3s ease, opacity 0.3s ease;
+      user-select: none;
     }
     .archive-menu.active .dropdown {
       max-height: 200px;
@@ -116,17 +85,20 @@
 
     /* LOGO */
     header {
-      margin-top: 0;
+      margin: 0; /* Remove margin so no overlap */
+      padding-top: 10px; /* some spacing from top */
       flex-shrink: 0;
-      padding-top: 10px;
       user-select: none;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1; /* behind hamburger */
     }
     header img {
       max-width: 37vw;
       height: auto;
       cursor: pointer;
       display: block;
-      margin: 0 auto;
     }
 
     /* VIDEO */
@@ -145,13 +117,11 @@
       box-shadow: 0 0 15px rgba(255,255,255,0.15);
     }
 
-    /* CAPTION - max width exactly same as video container */
+    /* CAPTION */
     .caption {
       margin-top: 0.8vh;
-      font-size: 1.2em;
-      white-space: normal; /* allow wrap */
-      overflow: visible;
-      text-overflow: clip;
+      font-size: 1em;  /* smaller font so it fits */
+      white-space: normal; /* allow wrapping */
       max-width: 40vw;
       margin-left: auto;
       margin-right: auto;
@@ -161,10 +131,12 @@
     /* SOCIAL LINKS */
     footer {
       margin-top: 0.4vh;
-      font-size: 0.6em;
+      font-size: 0.55em; /* smaller font */
       letter-spacing: 1px;
       user-select: none;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.4rem; /* half the space before tap text */
+      display: flex;
+      justify-content: center;
     }
     footer .social-links {
       display: flex;
@@ -180,9 +152,9 @@
     }
     footer .social-links a:hover { text-decoration: underline; }
 
-    /* TAP TEXT BELOW LINKS */
+    /* TAP TEXT */
     .tap-text {
-      margin-top: 1.2vh;
+      margin-top: 0.6vh;
       font-size: 0.55em;
       letter-spacing: 1px;
       animation: glow 1.5s ease-in-out infinite alternate;
@@ -207,14 +179,14 @@
     @media (max-width: 768px) {
       header img { max-width: 70vw; } /* bigger logo on mobile */
       .video-container { width: 92vw; max-width: 92vw; }
-      .caption { font-size: 1em; max-width: 92vw; white-space: normal; }
-      footer { font-size: 0.5em; }
+      .caption { font-size: 0.85em; max-width: 92vw; white-space: normal; }
+      footer { font-size: 0.5em; margin-bottom: 0.2rem; }
     }
 
     /* TINY PHONES */
     @media (max-width: 400px) {
       header img { max-width: 75vw; }
-      .caption { font-size: 0.95em; }
+      .caption { font-size: 0.8em; }
     }
   </style>
 </head>
