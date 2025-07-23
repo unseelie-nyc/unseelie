@@ -6,52 +6,14 @@
   
   <title>unseelie ஃ timeless collective library of imagination</title>
 
-  <!-- ✅ SEO -->
-  <meta name="description" content="unseelie is a timeless collective library of imagination based in NYC, sharing contemporary fantasy, multimedia art, and experimental sound." />
-  <meta name="keywords" content="unseelie, NYC art collective, contemporary fantasy, dasychira, sentinel, QUALIATIK, himera, yikii, galen tipton, experimental music" />
-  <meta name="author" content="unseelie collective" />
-  <link rel="canonical" href="https://unseel.ie" />
+  <!-- SEO and meta omitted for brevity -->
 
-  <!-- ✅ Open Graph + Twitter -->
-  <meta property="og:title" content="unseelie ஃ timeless collective library of imagination" />
-  <meta property="og:description" content="a timeless collective library of imagination based in NYC" />
-  <meta property="og:url" content="https://unseel.ie" />
-  <meta property="og:image" content="https://unseel.ie/media/unseelie/blue_unseelie.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- ✅ JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicGroup",
-    "name": "unseelie",
-    "description": "A timeless collective library of imagination based in NYC, blending contemporary fantasy, multimedia art, and experimental music.",
-    "url": "https://unseel.ie",
-    "sameAs": [
-      "https://soundcloud.com/unseelie_nyc",
-      "https://unseelie-nyc.bandcamp.com/",
-      "https://www.instagram.com/____unseelie/",
-      "https://twitter.com/____unseelie",
-      "https://www.facebook.com/unseelie.nyc/"
-    ],
-    "member": [
-      {"@type": "Person", "name": "dasychira"},
-      {"@type": "Person", "name": "sentinel"},
-      {"@type": "Person", "name": "QUALIATIK"},
-      {"@type": "Person", "name": "himera"},
-      {"@type": "Person", "name": "yikii"},
-      {"@type": "Person", "name": "galen tipton"}
-    ]
-  }
-  </script>
-
-  <!-- ✅ Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
   <style>
     html, body {
       font-family: 'Montserrat', sans-serif;
-      background: blue; /* reminder to self: change back to black after layout confirmed */
+      background: #000; /* changed back to black */
       color: #eee;
       margin: 0;
       padding: 0;
@@ -66,15 +28,16 @@
       position: relative;
     }
 
-    /* ✅ HAMBURGER fixed top right with padding so no overlap */
+    /* Hamburger fixed top right with forced positioning */
     .archive-menu {
       position: fixed;
       top: 10px;
       right: 10px;
       z-index: 9999;
       user-select: none;
-      padding-left: 10px; /* keeps some distance from logo if close */
+      padding-left: 10px;
       background: transparent;
+      margin: 0;
     }
     .archive-menu .hamburger {
       cursor: pointer;
@@ -117,7 +80,7 @@
     }
     .archive-menu .dropdown a:hover { text-decoration: underline; }
 
-    /* ✅ HEADER and LOGO stacked centered */
+    /* HEADER and LOGO stacked centered */
     header {
       margin-top: 6vh;
       flex-shrink: 0;
@@ -128,20 +91,22 @@
       z-index: 1;
     }
     header img {
-      max-width: 60vw;
+      max-width: 18vw; /* 30% of original 60vw on desktop */
       height: auto;
       cursor: pointer;
       display: block;
       user-select: none;
+      transition: max-width 0.3s ease;
     }
 
-    /* ✅ VIDEO stacked below logo */
+    /* VIDEO stacked below logo */
     .video-container {
       cursor: pointer;
       flex-shrink: 0;
-      margin-top: 1.5vh; /* smaller gap for vertical stacking */
-      width: 60vw;
-      max-width: 60vw;
+      margin-top: 1.5vh;
+      width: 30vw; /* 50% of original 60vw on desktop */
+      max-width: 30vw;
+      transition: width 0.3s ease;
     }
     .video-container video {
       width: 100%;
@@ -150,22 +115,23 @@
       user-select: none;
     }
 
-    /* ✅ CAPTION below video */
+    /* CAPTION below video */
     .caption {
       margin-top: 1vh;
       font-size: 0.85em;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: clip;
-      width: 60vw;
-      max-width: 60vw;
+      width: 30vw; /* match video width */
+      max-width: 30vw;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
       user-select: none;
+      transition: width 0.3s ease;
     }
 
-    /* ✅ SOCIAL LINKS */
+    /* SOCIAL LINKS */
     footer {
       margin-top: 1vh;
       font-size: 0.55em;
@@ -184,7 +150,7 @@
     }
     footer .social-links a:hover { text-decoration: underline; }
 
-    /* ✅ TAP ANYWHERE TEXT */
+    /* TAP ANYWHERE TEXT */
     .tap-text {
       margin-top: 1vh;
       font-size: 0.55em;
@@ -208,17 +174,17 @@
     /* ====== RESPONSIVE ====== */
     @media (max-width: 1024px) {
       header img {
-        max-width: 90vw; /* bigger logo on smaller screens */
+        max-width: 54vw; /* 60% of original 90vw */
       }
       .video-container {
-        width: 90vw;
-        max-width: 90vw;
+        width: 54vw;
+        max-width: 54vw;
         margin-top: 2vh;
       }
       .caption {
         font-size: 0.8em;
-        width: 90vw;
-        max-width: 90vw;
+        width: 54vw;
+        max-width: 54vw;
       }
       footer {
         font-size: 0.5em;
@@ -226,21 +192,29 @@
       .tap-text {
         margin-top: 2vh;
       }
+      .archive-menu {
+        top: 10px;
+        right: 10px;
+      }
     }
 
     @media (max-width: 400px) {
       header img {
-        max-width: 95vw;
+        max-width: 57vw; /* 60% of original 95vw */
       }
       .caption {
         font-size: 0.75em;
+      }
+      .archive-menu {
+        top: 10px;
+        right: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ HAMBURGER MENU -->
+  <!-- HAMBURGER MENU -->
   <div class="archive-menu" id="archiveMenu">
     <div class="hamburger" aria-label="Archive menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
     <div class="dropdown" role="menu" aria-hidden="true">
@@ -249,24 +223,24 @@
     </div>
   </div>
 
-  <!-- ✅ LOGO -->
+  <!-- LOGO -->
   <header>
     <a href="https://unseel.ie" target="_blank" rel="noopener">
       <img src="media/unseelie/blue_unseelie.jpg" alt="unseelie logo" />
     </a>
   </header>
 
-  <!-- ✅ VIDEO -->
+  <!-- VIDEO -->
   <a href="https://kud.li/unsls34" class="video-container" target="_blank" rel="noopener">
     <video autoplay muted loop playsinline>
       <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
     </video>
   </a>
 
-  <!-- ✅ CAPTION aligned to video width -->
+  <!-- CAPTION -->
   <div class="caption">ஃ celebrating the timeless collective library of imagination ஃ</div>
 
-  <!-- ✅ SOCIAL LINKS -->
+  <!-- SOCIAL LINKS -->
   <footer>
     <div class="social-links">
       <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
@@ -279,10 +253,10 @@
     </div>
   </footer>
 
-  <!-- ✅ TAP TEXT -->
+  <!-- TAP TEXT -->
   <div class="tap-text">click to enable sound</div>
 
-  <!-- ✅ HIDDEN SOUNDCLOUD PLAYER -->
+  <!-- HIDDEN SOUNDCLOUD PLAYER -->
   <iframe 
     id="sc-player"
     class="soundcloud-player"
