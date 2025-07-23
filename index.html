@@ -70,6 +70,7 @@
       top: 10px;
       right: 10px;
       z-index: 9999;
+      user-select: none;
     }
     .archive-menu .hamburger {
       cursor: pointer;
@@ -83,6 +84,7 @@
       height: 3px;
       background: #fff;
       border-radius: 2px;
+      display: block;
     }
     .archive-menu .dropdown {
       background: #111;
@@ -97,7 +99,7 @@
       overflow: hidden;
       opacity: 0;
       pointer-events: none;
-      transition: 0.3s ease;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
     }
     .archive-menu.active .dropdown {
       max-height: 200px;
@@ -116,11 +118,15 @@
     header {
       margin-top: 0;
       flex-shrink: 0;
+      padding-top: 10px;
+      user-select: none;
     }
     header img {
-      max-width: 28vw;
+      max-width: 37vw;
       height: auto;
       cursor: pointer;
+      display: block;
+      margin: 0 auto;
     }
 
     /* VIDEO */
@@ -135,15 +141,21 @@
       width: 100%;
       height: auto;
       display: block;
+      border-radius: 4px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.15);
     }
 
-    /* CAPTION */
+    /* CAPTION - max width exactly same as video container */
     .caption {
       margin-top: 0.8vh;
       font-size: 1.2em;
-      white-space: nowrap;
-      overflow: hidden;
+      white-space: normal; /* allow wrap */
+      overflow: visible;
       text-overflow: clip;
+      max-width: 40vw;
+      margin-left: auto;
+      margin-right: auto;
+      user-select: none;
     }
 
     /* SOCIAL LINKS */
@@ -151,6 +163,8 @@
       margin-top: 0.4vh;
       font-size: 0.6em;
       letter-spacing: 1px;
+      user-select: none;
+      margin-bottom: 0.8rem;
     }
     footer .social-links {
       display: flex;
@@ -162,15 +176,18 @@
       color: #eee;
       text-decoration: none;
       white-space: nowrap;
+      user-select: text;
     }
     footer .social-links a:hover { text-decoration: underline; }
 
-    /* TAP ANYWHERE */
+    /* TAP TEXT BELOW LINKS */
     .tap-text {
-      margin-top: 0.6vh;
+      margin-top: 1.2vh;
       font-size: 0.55em;
       letter-spacing: 1px;
       animation: glow 1.5s ease-in-out infinite alternate;
+      user-select: none;
+      margin-bottom: 1.5rem;
     }
     @keyframes glow {
       from { opacity: 0.6; }
@@ -188,9 +205,9 @@
 
     /* MOBILE FIXES */
     @media (max-width: 768px) {
-      header img { max-width: 70vw; } /* larger logo mobile */
+      header img { max-width: 70vw; } /* bigger logo on mobile */
       .video-container { width: 92vw; max-width: 92vw; }
-      .caption { font-size: 1em; width: 92vw; white-space: nowrap; }
+      .caption { font-size: 1em; max-width: 92vw; white-space: normal; }
       footer { font-size: 0.5em; }
     }
 
@@ -204,9 +221,9 @@
 <body>
 
   <!-- HAMBURGER MENU -->
-  <div class="archive-menu" id="archiveMenu">
-    <div class="hamburger"><span></span><span></span><span></span></div>
-    <div class="dropdown">
+  <div class="archive-menu" id="archiveMenu" aria-label="Archive menu" role="button" tabindex="0">
+    <div class="hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="dropdown" aria-hidden="true">
       <strong>archive</strong>
       <a href="#">coming soon…</a>
     </div>
@@ -243,7 +260,7 @@
   </footer>
 
   <!-- TAP TEXT BELOW LINKS -->
-  <div class="tap-text">tap anywhere to enable sound</div>
+  <div class="tap-text">click to enable sound</div>
 
   <!-- HIDDEN SOUNDCLOUD PLAYER -->
   <iframe 
