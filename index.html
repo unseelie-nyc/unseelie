@@ -69,10 +69,15 @@
       position: relative;
 
       /* ✅ Custom cursor */
-      cursor: url('media/unseelie/mouse.cur'), auto;
+      cursor: url("media/unseelie/mouse.cur"), auto;
     }
 
-    /* ✅ Hamburger top-left */
+    /* ✅ Force cursor on all elements */
+    * {
+      cursor: url("media/unseelie/mouse.cur"), auto !important;
+    }
+
+    /* ✅ Hamburger top-left (back to original) */
     .archive-menu {
       position: fixed;
       top: 10px;
@@ -82,10 +87,16 @@
     }
     .archive-menu .hamburger {
       cursor: pointer;
-      width: 30px;
-      height: 30px;
-      background: url('media/unseelie/hamburger.png') no-repeat center/contain;
-      display: block;
+      width: 26px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .archive-menu .hamburger span {
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
     }
     .archive-menu .dropdown {
       background: #111;
@@ -243,9 +254,11 @@
 </head>
 <body>
 
-  <!-- ✅ HAMBURGER MENU -->
+  <!-- ✅ HAMBURGER MENU (reverted to original bars) -->
   <div class="archive-menu" id="archiveMenu">
-    <div class="hamburger" aria-label="Archive menu" role="button" tabindex="0"></div>
+    <div class="hamburger" aria-label="Archive menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
     <div class="dropdown" role="menu" aria-hidden="true">
       <strong>archive</strong>
       <a href="#" role="menuitem" tabindex="-1">coming soon…</a>
