@@ -51,7 +51,7 @@
   <style>
     html, body {
       font-family: 'Montserrat', sans-serif;
-      background: #000; /* background back to black */
+      background: #000; /* background black */
       color: #eee;
       margin: 0;
       padding: 0;
@@ -68,15 +68,17 @@
 
     /* ✅ HAMBURGER MENU */
     .archive-menu {
-      position: fixed;  /* pinned to viewport */
-      top: 10px;
-      right: 10px;
+      position: fixed !important; /* pinned always */
+      top: 10px !important;
+      right: 10px !important;
       z-index: 9999;
       user-select: none;
       background: transparent;
-      /* minimal padding so it doesn't overlap the logo */
-      padding-left: 8px;
-      padding-right: 8px;
+      padding: 0 8px; /* padding so it's easier to tap */
+      margin: 0 !important;
+      display: flex;
+      align-items: center;
+      height: 32px;
     }
     .archive-menu .hamburger {
       cursor: pointer;
@@ -85,7 +87,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding-right: 0; /* default no padding */
+      padding: 0;
+      margin: 0;
     }
     .archive-menu .hamburger span {
       height: 3px;
@@ -106,6 +109,9 @@
       opacity: 0;
       pointer-events: none;
       transition: 0.3s ease;
+      position: absolute;
+      right: 0;
+      top: 36px;
     }
     .archive-menu.active .dropdown {
       max-height: 200px;
@@ -120,32 +126,36 @@
     }
     .archive-menu .dropdown a:hover { text-decoration: underline; }
 
-    /* ✅ LOGO */
+    /* ✅ HEADER WRAPPER to control layout for logo + hamburger */
     header {
       margin-top: 6vh;
-      flex-shrink: 0;
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: center; /* center for desktop */
       position: relative;
       z-index: 1;
-      /* add right margin so logo doesn't get too close to hamburger */
-      margin-right: 48px; /* reminder to self: adjust this if hamburger size changes */
+      padding-right: 64px; /* reminder to self: leave space for hamburger */
+      box-sizing: border-box;
     }
-    header img {
-      max-width: 40vw; /* reminder to self: resizing this affects overall balance */
+    header a {
+      display: inline-block;
+      max-width: 40vw;
       height: auto;
       cursor: pointer;
-      display: block;
+      user-select: none;
       transform-origin: center top;
+    }
+    header img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* ✅ VIDEO */
     .video-container {
       cursor: pointer;
-      flex-shrink: 0;
       margin-top: 2vh;
-      width: 35vw; /* reminder to self: on desktop this aligns with caption */
+      width: 35vw;
       max-width: 35vw;
       transform-origin: center top;
     }
@@ -162,7 +172,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: clip;
-      width: 35vw; /* matches video width */
+      width: 35vw;
       max-width: 35vw;
       margin-left: auto;
       margin-right: auto;
@@ -210,22 +220,25 @@
       pointer-events: none;
     }
 
-    /* ✅ MOBILE + TABLET */
+    /* ======================= MOBILE + TABLET ======================= */
     @media (max-width: 1024px) {
       header {
+        justify-content: flex-start; /* align left so logo doesn't overlap hamburger */
+        padding-right: 0; /* no padding on mobile */
         margin-top: 8vh;
-        margin-right: 56px; /* slightly more padding on smaller screens */
+        max-width: 90vw; /* limit width so logo can't go under hamburger */
       }
-      header img {
-        max-width: 60vw; /* reminder to self: bigger logo won't move hamburger since it's fixed */
+      header a {
+        max-width: 70vw; /* smaller max width on mobile so no overlap */
       }
       .video-container {
-        width: 90vw; /* near edges on mobile */
+        width: 90vw;
         max-width: 90vw;
+        margin-top: 1vh;
       }
       .caption {
         font-size: 0.8em;
-        width: 90vw; /* matches mobile video */
+        width: 90vw;
         max-width: 90vw;
       }
       footer {
@@ -234,22 +247,12 @@
       .tap-text {
         margin-top: 2vh;
       }
-
-      /* Hamburger flush right on mobile */
-      .archive-menu {
-        right: 0 !important;        /* flush to right edge */
-        padding-right: 12px;        /* breathing room inside hamburger */
-        top: 10px !important;
-        margin-right: 0 !important; /* override any margin */
-      }
-      .archive-menu .hamburger {
-        padding-right: 12px; /* add padding to hamburger bars */
-      }
+      /* Hamburger already fixed top right - no changes needed */
     }
 
-    /* ✅ VERY SMALL PHONES */
+    /* ======================= VERY SMALL PHONES ======================= */
     @media (max-width: 400px) {
-      header img {
+      header a {
         max-width: 70vw;
       }
       .caption {
@@ -257,24 +260,31 @@
       }
     }
 
-    /* ✅ DESKTOP ONLY SCALE LOGO & VIDEO */
+    /* ======================= DESKTOP ONLY SCALE ======================= */
     @media (min-width: 1025px) {
-      header img,
-      .video-container {
-        transform: scale(0.6);
+      header {
+        justify-content: center;
+        padding-right: 64px; /* leave space for hamburger */
+        max-width: none;
+        margin-top: 6vh;
+      }
+      header a {
+        max-width: 40vw;
+        transform: scale(0.5);
         transform-origin: center top;
       }
-    }
-
-    /* ✅ FORCE HAMBURGER HARD TOP-RIGHT */
-    .archive-menu {
-      position: fixed !important; /* pinned always */
-      top: 10px !important;
-      right: 10px !important;
-      left: auto !important; /* ignore any flex centering */
-      margin: 0 !important;
-      background: transparent;
-      z-index: 9999;
+      .video-container {
+        width: 35vw;
+        max-width: 35vw;
+        margin-top: 1vh;
+        transform: scale(0.4);
+        transform-origin: center top;
+      }
+      .caption {
+        width: 35vw;
+        max-width: 35vw;
+        font-size: 0.85em;
+      }
     }
   </style>
 </head>
