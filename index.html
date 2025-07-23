@@ -6,14 +6,52 @@
   
   <title>unseelie ஃ timeless collective library of imagination</title>
 
-  <!-- SEO and meta omitted for brevity -->
+  <!-- ✅ SEO -->
+  <meta name="description" content="unseelie is a timeless collective library of imagination based in NYC, sharing contemporary fantasy, multimedia art, and experimental sound." />
+  <meta name="keywords" content="unseelie, NYC art collective, contemporary fantasy, dasychira, sentinel, QUALIATIK, himera, yikii, galen tipton, experimental music" />
+  <meta name="author" content="unseelie collective" />
+  <link rel="canonical" href="https://unseel.ie" />
 
+  <!-- ✅ Open Graph + Twitter -->
+  <meta property="og:title" content="unseelie ஃ timeless collective library of imagination" />
+  <meta property="og:description" content="a timeless collective library of imagination based in NYC" />
+  <meta property="og:url" content="https://unseel.ie" />
+  <meta property="og:image" content="https://unseel.ie/media/unseelie/blue_unseelie.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- ✅ JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "unseelie",
+    "description": "A timeless collective library of imagination based in NYC, blending contemporary fantasy, multimedia art, and experimental music.",
+    "url": "https://unseel.ie",
+    "sameAs": [
+      "https://soundcloud.com/unseelie_nyc",
+      "https://unseelie-nyc.bandcamp.com/",
+      "https://www.instagram.com/____unseelie/",
+      "https://twitter.com/____unseelie",
+      "https://www.facebook.com/unseelie.nyc/"
+    ],
+    "member": [
+      {"@type": "Person", "name": "dasychira"},
+      {"@type": "Person", "name": "sentinel"},
+      {"@type": "Person", "name": "QUALIATIK"},
+      {"@type": "Person", "name": "himera"},
+      {"@type": "Person", "name": "yikii"},
+      {"@type": "Person", "name": "galen tipton"}
+    ]
+  }
+  </script>
+
+  <!-- ✅ Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
   <style>
     html, body {
       font-family: 'Montserrat', sans-serif;
-      background: #000; /* changed back to black */
+      background: #000; /* black background */
       color: #eee;
       margin: 0;
       padding: 0;
@@ -28,11 +66,12 @@
       position: relative;
     }
 
-    /* Hamburger fixed top right with forced positioning */
+    /* Hamburger fixed top left */
     .archive-menu {
       position: fixed;
       top: 10px;
-      right: 10px;
+      left: 10px;
+      right: auto;
       z-index: 9999;
       user-select: none;
       padding-left: 10px;
@@ -91,7 +130,7 @@
       z-index: 1;
     }
     header img {
-      max-width: 18vw; /* 30% of original 60vw on desktop */
+      max-width: 24vw; /* desktop: ~33% bigger than 18vw */
       height: auto;
       cursor: pointer;
       display: block;
@@ -104,8 +143,8 @@
       cursor: pointer;
       flex-shrink: 0;
       margin-top: 1.5vh;
-      width: 30vw; /* 50% of original 60vw on desktop */
-      max-width: 30vw;
+      width: 40vw; /* desktop: ~33% bigger than 30vw */
+      max-width: 40vw;
       transition: width 0.3s ease;
     }
     .video-container video {
@@ -122,8 +161,8 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: clip;
-      width: 30vw; /* match video width */
-      max-width: 30vw;
+      width: 40vw; /* match video */
+      max-width: 40vw;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
@@ -174,17 +213,17 @@
     /* ====== RESPONSIVE ====== */
     @media (max-width: 1024px) {
       header img {
-        max-width: 54vw; /* 60% of original 90vw */
+        max-width: 72vw; /* mobile: ~33% bigger than previous 54vw */
       }
       .video-container {
-        width: 54vw;
-        max-width: 54vw;
+        width: 72vw; /* bigger video so caption fits */
+        max-width: 72vw;
         margin-top: 2vh;
       }
       .caption {
+        width: 72vw; /* match video width */
+        max-width: 72vw;
         font-size: 0.8em;
-        width: 54vw;
-        max-width: 54vw;
       }
       footer {
         font-size: 0.5em;
@@ -194,20 +233,24 @@
       }
       .archive-menu {
         top: 10px;
-        right: 10px;
+        left: 10px; /* hamburger on left on mobile */
+        right: auto;
       }
     }
 
     @media (max-width: 400px) {
       header img {
-        max-width: 57vw; /* 60% of original 95vw */
+        max-width: 76vw; /* mobile smaller screen logo */
       }
       .caption {
         font-size: 0.75em;
+        width: 76vw;
+        max-width: 76vw;
       }
       .archive-menu {
         top: 10px;
-        right: 10px;
+        left: 10px;
+        right: auto;
       }
     }
   </style>
