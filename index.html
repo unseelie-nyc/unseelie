@@ -51,14 +51,14 @@
   <style>
     html, body {
       font-family: 'Montserrat', sans-serif;
-      background: blue; /* Changed from black for visibility */
+      background: #000; /* background back to black */
       color: #eee;
       margin: 0;
       padding: 0;
       text-align: center;
       height: 100vh;
       width: 100vw;
-      overflow: hidden; /* No scrollbars by default */
+      overflow: hidden; /* No scrollbars */
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -68,11 +68,15 @@
 
     /* ✅ HAMBURGER MENU */
     .archive-menu {
-      position: fixed;  /* stays pinned to viewport */
+      position: fixed;  /* pinned to viewport */
       top: 10px;
       right: 10px;
       z-index: 9999;
       user-select: none;
+      background: transparent;
+      /* minimal padding so it doesn't overlap the logo */
+      padding-left: 8px;
+      padding-right: 8px;
     }
     .archive-menu .hamburger {
       cursor: pointer;
@@ -125,12 +129,15 @@
       justify-content: center;
       position: relative;
       z-index: 1;
+      /* add right margin so logo doesn't get too close to hamburger */
+      margin-right: 48px; /* reminder to self: adjust this if hamburger size changes */
     }
     header img {
-      max-width: 40vw; /* ChatGPT reminder: resizing this affects overall balance */
+      max-width: 40vw; /* reminder to self: resizing this affects overall balance */
       height: auto;
       cursor: pointer;
       display: block;
+      transform-origin: center top;
     }
 
     /* ✅ VIDEO */
@@ -138,8 +145,9 @@
       cursor: pointer;
       flex-shrink: 0;
       margin-top: 2vh;
-      width: 35vw; /* ChatGPT reminder: on desktop this aligns with caption */
+      width: 35vw; /* reminder to self: on desktop this aligns with caption */
       max-width: 35vw;
+      transform-origin: center top;
     }
     .video-container video {
       width: 100%;
@@ -206,9 +214,10 @@
     @media (max-width: 1024px) {
       header {
         margin-top: 8vh;
+        margin-right: 56px; /* slightly more padding on smaller screens */
       }
       header img {
-        max-width: 60vw; /* ChatGPT reminder: this bigger logo won't move hamburger since it's fixed */
+        max-width: 60vw; /* reminder to self: bigger logo won't move hamburger since it's fixed */
       }
       .video-container {
         width: 90vw; /* near edges on mobile */
@@ -231,6 +240,7 @@
         right: 0 !important;        /* flush to right edge */
         padding-right: 12px;        /* breathing room inside hamburger */
         top: 10px !important;
+        margin-right: 0 !important; /* override any margin */
       }
       .archive-menu .hamburger {
         padding-right: 12px; /* add padding to hamburger bars */
@@ -247,35 +257,12 @@
       }
     }
 
-    /* ✅ DESKTOP SCALE DOWN */
+    /* ✅ DESKTOP ONLY SCALE LOGO & VIDEO */
     @media (min-width: 1025px) {
-      body {
-        transform: scale(0.5); /* stronger scale, but not too small */
-        transform-origin: top center; /* keeps it centered nicely */
-      }
-      html, body {
-        height: auto; /* allow overflow if needed */
-        overflow: visible;
-      }
-
-      /* Increase font size and widths inside scaled container to keep text readable */
-      header img {
-        max-width: calc(40vw / 0.5); /* counter scale */
-      }
-      .caption {
-        font-size: calc(0.85em / 0.5); /* counter scale */
-        width: calc(35vw / 0.5);
-        max-width: calc(35vw / 0.5);
-      }
+      header img,
       .video-container {
-        width: calc(35vw / 0.5);
-        max-width: calc(35vw / 0.5);
-      }
-      footer {
-        font-size: calc(0.55em / 0.5);
-      }
-      .tap-text {
-        font-size: calc(0.55em / 0.5);
+        transform: scale(0.6);
+        transform-origin: center top;
       }
     }
 
@@ -286,6 +273,8 @@
       right: 10px !important;
       left: auto !important; /* ignore any flex centering */
       margin: 0 !important;
+      background: transparent;
+      z-index: 9999;
     }
   </style>
 </head>
