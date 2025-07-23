@@ -25,24 +25,26 @@
       width: 100vw;
       overflow: hidden;
       user-select: none;
+
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 2vh; /* small spacing between elements */
+      gap: 2vh;
     }
 
-    /* LOGO: large + dominant */
+    /* BALANCED LOGO SIZE */
     header img {
-      max-width: 65vw;  /* bigger */
+      max-width: 40vw; /* slightly bigger than video */
       height: auto;
       flex-shrink: 0;
+      cursor: pointer;
     }
 
-    /* VIDEO: much smaller now */
+    /* PROPORTIONAL VIDEO */
     .video-container {
-      max-width: 35vw;  /* shrink */
-      width: 35vw;
+      max-width: 30vw; 
+      width: 30vw;
       cursor: pointer;
       flex-shrink: 0;
     }
@@ -53,40 +55,82 @@
       border: none;
     }
 
-    /* Caption aligned to video edges */
+    /* Caption aligns with video width */
     .caption {
-      width: 35vw;        /* matches video width */
-      margin: 0 auto 0 auto;
-      font-size: 1.2em;   /* larger than link text */
-      letter-spacing: 2px;
+      width: 30vw;
+      margin: 0 auto;
+      font-size: 1.1em;
+      letter-spacing: 1.5px;
       line-height: 1.4em;
     }
 
-    /* Footer links also aligned to video width */
+    /* Links align with video width */
     footer {
-      width: 35vw;
+      width: 30vw;
       margin: 0 auto;
-      font-size: 0.85em;
-      letter-spacing: 2px;
+      font-size: 0.8em;
+      letter-spacing: 1.5px;
     }
 
     footer .social-links {
-      margin-top: 6px;
-      font-weight: bold;
+      margin-top: 4px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 4px;
     }
 
     footer .social-links a {
       color: #eee;
       text-decoration: none;
-      margin: 0 6px;
-      font-weight: normal;
       white-space: nowrap;
     }
     footer .social-links a:hover {
       text-decoration: underline;
+    }
+
+    /* ARCHIVE HAMBURGER */
+    .archive-menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .hamburger {
+      cursor: pointer;
+      width: 28px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: #eee;
+      border-radius: 2px;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 30px;
+      right: 0;
+      background: #111;
+      padding: 10px;
+      border: 1px solid #333;
+      text-align: right;
+      min-width: 150px;
+    }
+    .dropdown a {
+      display: block;
+      color: #eee;
+      text-decoration: none;
+      padding: 6px 0;
+    }
+    .dropdown a:hover {
+      text-decoration: underline;
+    }
+    .archive-menu.active .dropdown {
+      display: block;
     }
 
     /* Hidden SoundCloud player */
@@ -98,15 +142,16 @@
       pointer-events: none;
     }
 
-    /* Responsive fallback for very small screens */
+    /* TABLET BREAKPOINT */
     @media (max-width: 1024px) {
-      header img { max-width: 70vw; }
-      .video-container { max-width: 50vw; }
-      .caption, footer { width: 50vw; }
+      header img { max-width: 50vw; }
+      .video-container { max-width: 40vw; }
+      .caption, footer { width: 40vw; }
     }
 
+    /* MOBILE BREAKPOINT */
     @media (max-width: 768px) {
-      header img { max-width: 80vw; }
+      header img { max-width: 70vw; }
       .video-container { max-width: 60vw; }
       .caption, footer { width: 60vw; }
     }
@@ -114,20 +159,36 @@
 </head>
 <body>
 
-  <!-- LARGE LOGO -->
+  <!-- HAMBURGER ARCHIVE MENU -->
+  <div class="archive-menu" id="archiveMenu">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="dropdown">
+      <strong>Archive</strong>
+      <!-- Empty for now, will populate later -->
+      <a href="#">Coming soon…</a>
+    </div>
+  </div>
+
+  <!-- LOGO → clickable back to home -->
   <header>
-    <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" draggable="false" />
+    <a href="https://unseel.ie" target="_blank" rel="noopener">
+      <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" draggable="false" />
+    </a>
   </header>
 
-  <!-- SMALLER CLICKABLE VIDEO -->
-  <a href="https://kud.li/unsl34" class="video-container">
+  <!-- CLICKABLE VIDEO -->
+  <a href="https://kud.li/unsl34" class="video-container" target="_blank" rel="noopener">
     <video autoplay muted loop playsinline>
       <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </a>
 
-  <!-- CAPTION + LINKS aligned to video width -->
+  <!-- CAPTION + LINKS aligned -->
   <div class="caption">
     ஃ celebrating the timeless collective library of imagination ஃ
   </div>
@@ -151,10 +212,15 @@
     src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2118912432&color=%23a70000&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true">
   </iframe>
 
-  <!-- Disable drag + right click -->
+  <!-- Disable drag + right click + enable hamburger -->
   <script>
     document.addEventListener('dragstart', e => e.preventDefault());
     document.addEventListener('contextmenu', e => e.preventDefault());
+    
+    const menu = document.getElementById('archiveMenu');
+    menu.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
   </script>
 
 </body>
