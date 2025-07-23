@@ -51,7 +51,7 @@
   <style>
     html, body {
       font-family: 'Montserrat', sans-serif;
-      background: #000;
+      background: blue; /* Changed from black for visibility */
       color: #eee;
       margin: 0;
       padding: 0;
@@ -81,6 +81,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      padding-right: 0; /* default no padding */
     }
     .archive-menu .hamburger span {
       height: 3px;
@@ -224,6 +225,16 @@
       .tap-text {
         margin-top: 2vh;
       }
+
+      /* Hamburger flush right on mobile */
+      .archive-menu {
+        right: 0 !important;        /* flush to right edge */
+        padding-right: 12px;        /* breathing room inside hamburger */
+        top: 10px !important;
+      }
+      .archive-menu .hamburger {
+        padding-right: 12px; /* add padding to hamburger bars */
+      }
     }
 
     /* ✅ VERY SMALL PHONES */
@@ -236,15 +247,35 @@
       }
     }
 
-    /* ✅ DESKTOP SCALE DOWN ~40% */
+    /* ✅ DESKTOP SCALE DOWN */
     @media (min-width: 1025px) {
       body {
-        transform: scale(0.6); /* ChatGPT reminder: this visually shrinks everything */
+        transform: scale(0.5); /* stronger scale, but not too small */
         transform-origin: top center; /* keeps it centered nicely */
       }
       html, body {
         height: auto; /* allow overflow if needed */
         overflow: visible;
+      }
+
+      /* Increase font size and widths inside scaled container to keep text readable */
+      header img {
+        max-width: calc(40vw / 0.5); /* counter scale */
+      }
+      .caption {
+        font-size: calc(0.85em / 0.5); /* counter scale */
+        width: calc(35vw / 0.5);
+        max-width: calc(35vw / 0.5);
+      }
+      .video-container {
+        width: calc(35vw / 0.5);
+        max-width: calc(35vw / 0.5);
+      }
+      footer {
+        font-size: calc(0.55em / 0.5);
+      }
+      .tap-text {
+        font-size: calc(0.55em / 0.5);
       }
     }
 
