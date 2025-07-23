@@ -58,7 +58,7 @@
       text-align: center;
       height: 100vh;
       width: 100vw;
-      overflow: hidden; /* No scrollbars */
+      overflow: hidden; /* No scrollbars by default */
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -66,9 +66,9 @@
       position: relative;
     }
 
-    /* ✅ HAMBURGER ALWAYS TOP-RIGHT */
+    /* ✅ HAMBURGER MENU */
     .archive-menu {
-      position: fixed;
+      position: fixed;  /* stays pinned to viewport */
       top: 10px;
       right: 10px;
       z-index: 9999;
@@ -126,7 +126,7 @@
       z-index: 1;
     }
     header img {
-      max-width: 40vw; /* smaller for desktop balance */
+      max-width: 40vw; /* ChatGPT reminder: resizing this affects overall balance */
       height: auto;
       cursor: pointer;
       display: block;
@@ -137,7 +137,7 @@
       cursor: pointer;
       flex-shrink: 0;
       margin-top: 2vh;
-      width: 35vw; /* desktop narrower so all fits */
+      width: 35vw; /* ChatGPT reminder: on desktop this aligns with caption */
       max-width: 35vw;
     }
     .video-container video {
@@ -153,7 +153,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: clip;
-      width: 35vw; /* match video width */
+      width: 35vw; /* matches video width */
       max-width: 35vw;
       margin-left: auto;
       margin-right: auto;
@@ -207,7 +207,7 @@
         margin-top: 8vh;
       }
       header img {
-        max-width: 60vw; /* mobile logo larger */
+        max-width: 60vw; /* ChatGPT reminder: this bigger logo won't move hamburger since it's fixed */
       }
       .video-container {
         width: 90vw; /* near edges on mobile */
@@ -234,6 +234,27 @@
       .caption {
         font-size: 0.75em;
       }
+    }
+
+    /* ✅ DESKTOP SCALE DOWN ~40% */
+    @media (min-width: 1025px) {
+      body {
+        transform: scale(0.6); /* ChatGPT reminder: this visually shrinks everything */
+        transform-origin: top center; /* keeps it centered nicely */
+      }
+      html, body {
+        height: auto; /* allow overflow if needed */
+        overflow: visible;
+      }
+    }
+
+    /* ✅ FORCE HAMBURGER HARD TOP-RIGHT */
+    .archive-menu {
+      position: fixed !important; /* pinned always */
+      top: 10px !important;
+      right: 10px !important;
+      left: auto !important; /* ignore any flex centering */
+      margin: 0 !important;
     }
   </style>
 </head>
