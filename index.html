@@ -21,38 +21,29 @@
       margin: 0;
       padding: 0;
       text-align: center;
-      height: 100%;
-      overflow: hidden; /* no scrolling */
-      user-select: none; /* no text selection */
-    }
-
-    header {
-      font-family: 'Playfair Display', serif;
-      margin: 0;
-      padding: 30px 0 10px 0;
+      height: 100vh; /* lock full screen */
+      width: 100vw;
+      overflow: hidden; /* no scroll */
+      user-select: none; /* no selection */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* evenly space logo, video, footer */
+      align-items: center;
     }
 
     header img {
-      max-width: 700px;
-      width: 90%;
+      max-width: 400px; /* logo size tuned for fit */
+      width: 60%;
       height: auto;
-      display: block;
-      margin: 0 auto;
     }
 
-    main {
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Video clickable container */
+    /* Video container takes moderate height so footer still fits */
     .video-container {
-      display: inline-block;
-      max-width: 70%;
-      width: 70%;
+      max-width: 60%;
+      width: 60%;
       cursor: pointer;
+      flex-shrink: 0;
     }
-
     .video-container video {
       width: 100%;
       height: auto;
@@ -60,38 +51,36 @@
       border: none;
     }
 
-    /* Text aligned to video width */
     .caption {
-      max-width: 70%;
-      margin: 20px auto 10px auto;
-      font-size: 1.4em; /* larger than links */
+      font-size: 1.3em;
       letter-spacing: 2px;
+      margin: 8px 0;
     }
 
     footer {
-      max-width: 70%;
-      margin: 0 auto;
-      font-size: 1em;
+      font-size: 0.9em;
       letter-spacing: 2px;
+      margin-bottom: 12px;
     }
 
     footer .social-links {
-      margin-top: 10px;
+      margin-top: 6px;
       font-weight: bold;
+      flex-wrap: wrap;
     }
 
     footer .social-links a {
       color: #eee;
       text-decoration: none;
-      margin: 0 10px;
+      margin: 0 8px;
       font-weight: normal;
+      white-space: nowrap;
     }
-
     footer .social-links a:hover {
       text-decoration: underline;
     }
 
-    /* Hidden/low-key SoundCloud embed */
+    /* Hide SoundCloud player visually */
     .soundcloud-player {
       width: 0;
       height: 0;
@@ -103,47 +92,43 @@
 </head>
 <body>
 
+  <!-- Logo -->
   <header>
     <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" draggable="false" />
   </header>
 
-  <main>
-    <!-- Make video clickable -->
-    <a href="https://kud.li/unsl34" class="video-container">
-      <video autoplay muted loop playsinline>
-        <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </a>
-  </main>
+  <!-- Clickable Video -->
+  <a href="https://kud.li/unsl34" class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </a>
 
-  <!-- Caption aligned to video width -->
-  <div class="caption">
-    ஃ celebrating the timeless collective library of imagination ஃ
+  <!-- Caption + Links (fits with no scroll) -->
+  <div>
+    <div class="caption">ஃ celebrating the timeless collective library of imagination ஃ</div>
+    <footer>
+      <div class="social-links">
+        <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
+        <a href="https://unseelie-nyc.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a> ஃ
+        <a href="https://www.ninaprotocol.com/profiles/unseelie.nyc" target="_blank" rel="noopener">Nina</a> ஃ
+        <a href="https://www.instagram.com/____unseelie/" target="_blank" rel="noopener">Instagram</a> ஃ
+        <a href="https://twitter.com/____unseelie" target="_blank" rel="noopener">Twitter</a> ஃ
+        <a href="https://www.facebook.com/unseelie.nyc/" target="_blank" rel="noopener">Facebook</a> ஃ
+        <a href="http://unseel.ie/" target="_blank" rel="noopener">unseel.ie</a>
+      </div>
+    </footer>
   </div>
 
-  <footer>
-    <div class="social-links">
-      <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
-      <a href="https://unseelie-nyc.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a> ஃ
-      <a href="https://www.ninaprotocol.com/profiles/unseelie.nyc" target="_blank" rel="noopener">Nina</a> ஃ
-      <a href="https://www.instagram.com/____unseelie/" target="_blank" rel="noopener">Instagram</a> ஃ
-      <a href="https://twitter.com/____unseelie" target="_blank" rel="noopener">Twitter</a> ஃ
-      <a href="https://www.facebook.com/unseelie.nyc/" target="_blank" rel="noopener">Facebook</a> ஃ
-      <a href="http://unseel.ie/" target="_blank" rel="noopener">unseel.ie</a>
-    </div>
-  </footer>
-
-  <!-- Low-key hidden SoundCloud autoplay -->
+  <!-- Hidden SoundCloud autoplay using your embed -->
   <iframe 
     class="soundcloud-player"
-    scrolling="no" 
-    frameborder="no" 
-    allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/unseelie_nyc/sepia-rainbow-4&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false">
+    scrolling="no" frameborder="no" allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2118912432&color=%23a70000&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true">
   </iframe>
 
-  <!-- Disable drag and context menu -->
+  <!-- Disable drag + right click -->
   <script>
     document.addEventListener('dragstart', e => e.preventDefault());
     document.addEventListener('contextmenu', e => e.preventDefault());
