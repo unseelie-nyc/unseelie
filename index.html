@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Prevent zoom on desktop/mobile -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <!-- Enable zoom on desktop but keep good viewport settings -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>unseelie | timeless collective library of imagination</title>
 
-  <!-- SEO and meta tags here... -->
+  <!-- SEO meta tags omitted for brevity but keep your existing ones -->
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
@@ -19,13 +19,15 @@
       margin: 0;
       padding: 0;
       text-align: center;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      overflow-y: auto; /* enable vertical scroll on desktop */
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
 
     /* HAMBURGER LOCKED TOP-RIGHT */
@@ -33,7 +35,7 @@
       position: fixed;
       top: 10px;
       right: 10px;
-      z-index: 99999; 
+      z-index: 99999;
       user-select: none;
       margin: 0;
       padding: 0;
@@ -99,7 +101,7 @@
       z-index: 1;
     }
     header img {
-      max-width: 37vw;
+      max-width: 42vw;  /* slightly bigger on mobile */
       height: auto;
       cursor: pointer;
       display: block;
@@ -124,7 +126,7 @@
     /* CAPTION */
     .caption {
       margin-top: 0.8vh;
-      font-size: 0.9em;
+      font-size: 0.85em;  /* slightly smaller to avoid cut-off */
       white-space: normal;
       max-width: 40vw;
       margin-left: auto;
@@ -139,7 +141,7 @@
       font-size: 0.55em;
       letter-spacing: 1px;
       user-select: none;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.2rem;
       display: flex;
       justify-content: center;
     }
@@ -182,9 +184,9 @@
 
     /* MOBILE FIXES */
     @media (max-width: 768px) {
-      header img { max-width: 70vw; }
+      header img { max-width: 42vw; }  /* bigger logo on mobile */
       .video-container { width: 92vw; max-width: 92vw; }
-      .caption { font-size: 0.85em; max-width: 92vw; white-space: normal; }
+      .caption { font-size: 0.8em; max-width: 92vw; white-space: normal; }
       footer { font-size: 0.5em; margin-bottom: 0.2rem; }
       /* Fix hamburger top right for mobile */
       .archive-menu {
@@ -196,7 +198,7 @@
     /* TINY PHONES */
     @media (max-width: 400px) {
       header img { max-width: 75vw; }
-      .caption { font-size: 0.8em; }
+      .caption { font-size: 0.75em; }
     }
 
     /* DESKTOP LARGE SCREENS (e.g. MacBook 1440px) */
