@@ -1,271 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>unseelie | timeless collective library of imagination</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-<style>
-  html, body {
-    font-family: 'Montserrat', sans-serif;
-    background: #000;
-    color: #eee;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  
+  <title>unseelie ஃ timeless collective library of imagination</title>
 
-  /* ✅ HAMBURGER TOP-RIGHT */
-  .archive-menu {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 9999;
-    user-select: none;
-  }
-  .archive-menu .hamburger {
-    cursor: pointer;
-    width: 26px;
-    height: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .archive-menu .hamburger span {
-    height: 3px;
-    background: #fff;
-    border-radius: 2px;
-  }
-  .archive-menu .dropdown {
-    background: #111;
-    margin-top: 8px;
-    border-radius: 5px;
-    font-size: 0.85em;
-    padding: 8px;
-    box-shadow: 0 0 8px #000;
-    text-align: left;
-    width: 150px;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.3s ease;
-  }
-  .archive-menu.active .dropdown {
-    max-height: 200px;
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .archive-menu .dropdown a {
-    color: #eee;
-    display: block;
-    padding: 5px 0;
-    text-decoration: none;
-  }
-  .archive-menu .dropdown a:hover { text-decoration: underline; }
+  <!-- ✅ SEO -->
+  <meta name="description" content="unseelie is a timeless collective library of imagination based in NYC, sharing contemporary fantasy, multimedia art, and experimental sound." />
+  <meta name="keywords" content="unseelie, NYC art collective, contemporary fantasy, dasychira, sentinel, QUALIATIK, himera, yikii, galen tipton, experimental music" />
+  <meta name="author" content="unseelie collective" />
+  <link rel="canonical" href="https://unseel.ie" />
 
-  /* ✅ DESKTOP DEFAULTS */
-  header {
-    margin-top: 50px;
-    flex-shrink: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-  }
-  header img {
-    max-width: 50vw; /* a bit larger on desktop */
-    height: auto;
-    cursor: pointer;
-    display: block;
-  }
+  <!-- ✅ Open Graph + Twitter -->
+  <meta property="og:title" content="unseelie ஃ timeless collective library of imagination" />
+  <meta property="og:description" content="a timeless collective library of imagination based in NYC" />
+  <meta property="og:url" content="https://unseel.ie" />
+  <meta property="og:image" content="https://unseel.ie/media/unseelie/blue_unseelie.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  .video-container {
-    cursor: pointer;
-    flex-shrink: 0;
-    width: 50vw; /* wider for desktop */
-    max-width: 50vw;
-    margin-top: 1vh;
-    margin-left: auto;
-    margin-right: auto;
+  <!-- ✅ JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "unseelie",
+    "description": "A timeless collective library of imagination based in NYC, blending contemporary fantasy, multimedia art, and experimental music.",
+    "url": "https://unseel.ie",
+    "sameAs": [
+      "https://soundcloud.com/unseelie_nyc",
+      "https://unseelie-nyc.bandcamp.com/",
+      "https://www.instagram.com/____unseelie/",
+      "https://twitter.com/____unseelie",
+      "https://www.facebook.com/unseelie.nyc/"
+    ],
+    "member": [
+      {"@type": "Person", "name": "dasychira"},
+      {"@type": "Person", "name": "sentinel"},
+      {"@type": "Person", "name": "QUALIATIK"},
+      {"@type": "Person", "name": "himera"},
+      {"@type": "Person", "name": "yikii"},
+      {"@type": "Person", "name": "galen tipton"}
+    ]
   }
-  .video-container video {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  </script>
 
-  .caption {
-    margin-top: 1vh;
-    font-size: 1em;
-    white-space: nowrap;
-    overflow: visible;
-    text-overflow: clip;
-    max-width: 50vw;
-    margin-left: auto;
-    margin-right: auto;
-    user-select: none;
-  }
+  <!-- ✅ Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
-  footer {
-    margin-top: 0.6vh;
-    font-size: 0.65em;
-    letter-spacing: 1px;
-  }
-  footer .social-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 3px;
-  }
-  footer .social-links a {
-    color: #eee;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  footer .social-links a:hover { text-decoration: underline; }
+  <style>
+    html, body {
+      font-family: 'Montserrat', sans-serif;
+      background: #000;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden; /* No scrollbars */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+    }
 
-  .tap-text {
-    margin-top: 1.5vh;
-    font-size: 0.55em;
-    letter-spacing: 1px;
-    animation: glow 1.5s ease-in-out infinite alternate;
-    user-select: none;
-  }
-  @keyframes glow {
-    from { opacity: 0.6; }
-    to { opacity: 1; }
-  }
+    /* ✅ HAMBURGER ALWAYS TOP-RIGHT */
+    .archive-menu {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 9999;
+      user-select: none;
+    }
+    .archive-menu .hamburger {
+      cursor: pointer;
+      width: 26px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .archive-menu .hamburger span {
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+    .archive-menu .dropdown {
+      background: #111;
+      margin-top: 8px;
+      border-radius: 5px;
+      font-size: 0.85em;
+      padding: 8px;
+      box-shadow: 0 0 8px #000;
+      text-align: left;
+      width: 150px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+    .archive-menu.active .dropdown {
+      max-height: 200px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .archive-menu .dropdown a {
+      color: #eee;
+      display: block;
+      padding: 5px 0;
+      text-decoration: none;
+    }
+    .archive-menu .dropdown a:hover { text-decoration: underline; }
 
-  .soundcloud-player {
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    position: absolute;
-    pointer-events: none;
-  }
-
-  /* ✅ MOBILE & IPAD */
-  @media (max-width: 1024px) {
+    /* ✅ LOGO */
     header {
-      margin-top: 65px;
+      margin-top: 6vh;
+      flex-shrink: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
     }
     header img {
-      max-width: 66vw; /* smaller for mobile */
+      max-width: 40vw; /* smaller for desktop balance */
+      height: auto;
+      cursor: pointer;
+      display: block;
     }
-    .video-container {
-      width: 80vw; /* mobile narrower */
-      max-width: 80vw;
-    }
-    .caption {
-      font-size: 0.85em;
-      max-width: 80vw;
-      width: 80vw;
-      white-space: nowrap;
-      overflow: visible;
-      text-overflow: clip;
-    }
-    footer {
-      font-size: 0.55em;
-    }
-    .tap-text {
-      margin-top: 2vh;
-    }
-  }
 
-  /* ✅ VERY SMALL PHONES */
-  @media (max-width: 400px) {
-    .caption {
-      font-size: 0.75em;
+    /* ✅ VIDEO */
+    .video-container {
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2vh;
+      width: 35vw; /* desktop narrower so all fits */
+      max-width: 35vw;
     }
-  }
-</style>
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ✅ CAPTION ALIGNED WITH VIDEO */
+    .caption {
+      margin-top: 1vh;
+      font-size: 0.85em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+      width: 35vw; /* match video width */
+      max-width: 35vw;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* ✅ SOCIAL LINKS */
+    footer {
+      margin-top: 1vh;
+      font-size: 0.55em;
+      letter-spacing: 1px;
+    }
+    footer .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3px;
+    }
+    footer .social-links a {
+      color: #eee;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    footer .social-links a:hover { text-decoration: underline; }
+
+    /* ✅ TAP ANYWHERE */
+    .tap-text {
+      margin-top: 1vh;
+      font-size: 0.55em;
+      letter-spacing: 1px;
+      animation: glow 1.5s ease-in-out infinite alternate;
+      user-select: none;
+    }
+    @keyframes glow {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+
+    .soundcloud-player {
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    /* ✅ MOBILE + TABLET */
+    @media (max-width: 1024px) {
+      header {
+        margin-top: 8vh;
+      }
+      header img {
+        max-width: 60vw; /* mobile logo larger */
+      }
+      .video-container {
+        width: 90vw; /* near edges on mobile */
+        max-width: 90vw;
+      }
+      .caption {
+        font-size: 0.8em;
+        width: 90vw; /* matches mobile video */
+        max-width: 90vw;
+      }
+      footer {
+        font-size: 0.5em;
+      }
+      .tap-text {
+        margin-top: 2vh;
+      }
+    }
+
+    /* ✅ VERY SMALL PHONES */
+    @media (max-width: 400px) {
+      header img {
+        max-width: 70vw;
+      }
+      .caption {
+        font-size: 0.75em;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HAMBURGER MENU -->
-<div class="archive-menu" id="archiveMenu">
-  <div class="hamburger" aria-label="Archive menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
-  <div class="dropdown" role="menu" aria-hidden="true">
-    <strong>archive</strong>
-    <a href="#" role="menuitem" tabindex="-1">coming soon…</a>
+  <!-- ✅ HAMBURGER MENU -->
+  <div class="archive-menu" id="archiveMenu">
+    <div class="hamburger" aria-label="Archive menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    <div class="dropdown" role="menu" aria-hidden="true">
+      <strong>archive</strong>
+      <a href="#" role="menuitem" tabindex="-1">coming soon…</a>
+    </div>
   </div>
-</div>
 
-<!-- LOGO -->
-<header>
-  <a href="https://unseel.ie" target="_blank" rel="noopener">
-    <img src="media/unseelie/blue_unseelie.jpg" alt="unseelie logo" />
+  <!-- ✅ LOGO -->
+  <header>
+    <a href="https://unseel.ie" target="_blank" rel="noopener">
+      <img src="media/unseelie/blue_unseelie.jpg" alt="unseelie logo" />
+    </a>
+  </header>
+
+  <!-- ✅ VIDEO -->
+  <a href="https://kud.li/unsls34" class="video-container" target="_blank" rel="noopener">
+    <video autoplay muted loop playsinline>
+      <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
+    </video>
   </a>
-</header>
 
-<!-- VIDEO -->
-<a href="https://kud.li/unsls34" class="video-container" target="_blank" rel="noopener">
-  <video autoplay muted loop playsinline>
-    <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
-  </video>
-</a>
+  <!-- ✅ CAPTION aligned to video width -->
+  <div class="caption">ஃ celebrating the timeless collective library of imagination ஃ</div>
 
-<!-- CAPTION -->
-<div class="caption">ஃ celebrating the timeless collective library of imagination ஃ</div>
+  <!-- ✅ SOCIAL LINKS -->
+  <footer>
+    <div class="social-links">
+      <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
+      <a href="https://unseelie-nyc.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a> ஃ
+      <a href="https://www.ninaprotocol.com/profiles/unseelie.nyc" target="_blank" rel="noopener">Nina</a> ஃ
+      <a href="https://www.instagram.com/____unseelie/" target="_blank" rel="noopener">Instagram</a> ஃ
+      <a href="https://twitter.com/____unseelie" target="_blank" rel="noopener">X</a> ஃ
+      <a href="https://www.facebook.com/unseelie.nyc/" target="_blank" rel="noopener">Facebook</a> ஃ
+      <a href="http://unseel.ie/" target="_blank" rel="noopener">unseel.ie</a>
+    </div>
+  </footer>
 
-<!-- SOCIAL LINKS -->
-<footer>
-  <div class="social-links">
-    <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
-    <a href="https://unseelie-nyc.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a> ஃ
-    <a href="https://www.ninaprotocol.com/profiles/unseelie.nyc" target="_blank" rel="noopener">Nina</a> ஃ
-    <a href="https://www.instagram.com/____unseelie/" target="_blank" rel="noopener">Instagram</a> ஃ
-    <a href="https://twitter.com/____unseelie" target="_blank" rel="noopener">X</a> ஃ
-    <a href="https://www.facebook.com/unseelie.nyc/" target="_blank" rel="noopener">Facebook</a> ஃ
-    <a href="http://unseel.ie/" target="_blank" rel="noopener">unseel.ie</a>
-  </div>
-</footer>
+  <!-- ✅ TAP TEXT -->
+  <div class="tap-text">click to enable sound</div>
 
-<!-- TAP TEXT -->
-<div class="tap-text">click to enable sound</div>
+  <!-- ✅ HIDDEN SOUNDCLOUD PLAYER -->
+  <iframe 
+    id="sc-player"
+    class="soundcloud-player"
+    scrolling="no" 
+    frameborder="no" 
+    allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2118912432&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
+  </iframe>
 
-<!-- HIDDEN SOUNDCLOUD PLAYER -->
-<iframe 
-  id="sc-player"
-  class="soundcloud-player"
-  scrolling="no" 
-  frameborder="no" 
-  allow="autoplay"
-  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2118912432&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
-</iframe>
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script>
+    const menu = document.getElementById('archiveMenu');
+    menu.addEventListener('click', (e) => {
+      menu.classList.toggle('active');
+      e.stopPropagation(); 
+    });
 
-<script src="https://w.soundcloud.com/player/api.js"></script>
-<script>
-  const menu = document.getElementById('archiveMenu');
-  menu.addEventListener('click', (e) => {
-    menu.classList.toggle('active');
-    e.stopPropagation(); 
-  });
+    const iframe = document.getElementById("sc-player");
+    const widget = SC.Widget(iframe);
+    let soundEnabled = false;
 
-  const iframe = document.getElementById("sc-player");
-  const widget = SC.Widget(iframe);
-  let soundEnabled = false;
+    const enableSound = () => {
+      if (!soundEnabled) {
+        widget.play();
+        soundEnabled = true;
+        document.querySelector('.tap-text').style.display = 'none';
+      }
+    };
 
-  const enableSound = () => {
-    if (!soundEnabled) {
-      widget.play();
-      soundEnabled = true;
-      document.querySelector('.tap-text').style.display = 'none';
-    }
-  };
-
-  document.body.addEventListener('click', enableSound);
-  document.body.addEventListener('touchstart', enableSound);
-</script>
+    document.body.addEventListener('click', enableSound);
+    document.body.addEventListener('touchstart', enableSound);
+  </script>
 </body>
 </html>
