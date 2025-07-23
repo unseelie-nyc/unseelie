@@ -51,7 +51,7 @@
   <style>
     html, body {
       font-family: 'Montserrat', sans-serif;
-      background: #000; /* background black */
+      background: blue; /* reminder to self: change back to black after layout confirmed */
       color: #eee;
       margin: 0;
       padding: 0;
@@ -66,19 +66,15 @@
       position: relative;
     }
 
-    /* ✅ HAMBURGER MENU */
+    /* ✅ HAMBURGER fixed top right with padding so no overlap */
     .archive-menu {
-      position: fixed !important; /* pinned always */
-      top: 10px !important;
-      right: 10px !important;
+      position: fixed;
+      top: 10px;
+      right: 10px;
       z-index: 9999;
       user-select: none;
+      padding-left: 10px; /* keeps some distance from logo if close */
       background: transparent;
-      padding: 0 8px; /* padding so it's easier to tap */
-      margin: 0 !important;
-      display: flex;
-      align-items: center;
-      height: 32px;
     }
     .archive-menu .hamburger {
       cursor: pointer;
@@ -87,8 +83,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 0;
-      margin: 0;
     }
     .archive-menu .hamburger span {
       height: 3px;
@@ -109,9 +103,6 @@
       opacity: 0;
       pointer-events: none;
       transition: 0.3s ease;
-      position: absolute;
-      right: 0;
-      top: 36px;
     }
     .archive-menu.active .dropdown {
       max-height: 200px;
@@ -126,54 +117,48 @@
     }
     .archive-menu .dropdown a:hover { text-decoration: underline; }
 
-    /* ✅ HEADER WRAPPER to control layout for logo + hamburger */
+    /* ✅ HEADER and LOGO stacked centered */
     header {
       margin-top: 6vh;
+      flex-shrink: 0;
       width: 100%;
       display: flex;
-      justify-content: center; /* center for desktop */
+      justify-content: center;
       position: relative;
       z-index: 1;
-      padding-right: 64px; /* reminder to self: leave space for hamburger */
-      box-sizing: border-box;
-    }
-    header a {
-      display: inline-block;
-      max-width: 40vw;
-      height: auto;
-      cursor: pointer;
-      user-select: none;
-      transform-origin: center top;
     }
     header img {
-      width: 100%;
+      max-width: 60vw;
       height: auto;
+      cursor: pointer;
       display: block;
+      user-select: none;
     }
 
-    /* ✅ VIDEO */
+    /* ✅ VIDEO stacked below logo */
     .video-container {
       cursor: pointer;
-      margin-top: 2vh;
-      width: 35vw;
-      max-width: 35vw;
-      transform-origin: center top;
+      flex-shrink: 0;
+      margin-top: 1.5vh; /* smaller gap for vertical stacking */
+      width: 60vw;
+      max-width: 60vw;
     }
     .video-container video {
       width: 100%;
       height: auto;
       display: block;
+      user-select: none;
     }
 
-    /* ✅ CAPTION ALIGNED WITH VIDEO */
+    /* ✅ CAPTION below video */
     .caption {
       margin-top: 1vh;
       font-size: 0.85em;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: clip;
-      width: 35vw;
-      max-width: 35vw;
+      width: 60vw;
+      max-width: 60vw;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
@@ -199,7 +184,7 @@
     }
     footer .social-links a:hover { text-decoration: underline; }
 
-    /* ✅ TAP ANYWHERE */
+    /* ✅ TAP ANYWHERE TEXT */
     .tap-text {
       margin-top: 1vh;
       font-size: 0.55em;
@@ -220,21 +205,15 @@
       pointer-events: none;
     }
 
-    /* ======================= MOBILE + TABLET ======================= */
+    /* ====== RESPONSIVE ====== */
     @media (max-width: 1024px) {
-      header {
-        justify-content: flex-start; /* align left so logo doesn't overlap hamburger */
-        padding-right: 0; /* no padding on mobile */
-        margin-top: 8vh;
-        max-width: 90vw; /* limit width so logo can't go under hamburger */
-      }
-      header a {
-        max-width: 70vw; /* smaller max width on mobile so no overlap */
+      header img {
+        max-width: 90vw; /* bigger logo on smaller screens */
       }
       .video-container {
         width: 90vw;
         max-width: 90vw;
-        margin-top: 1vh;
+        margin-top: 2vh;
       }
       .caption {
         font-size: 0.8em;
@@ -247,43 +226,14 @@
       .tap-text {
         margin-top: 2vh;
       }
-      /* Hamburger already fixed top right - no changes needed */
     }
 
-    /* ======================= VERY SMALL PHONES ======================= */
     @media (max-width: 400px) {
-      header a {
-        max-width: 70vw;
+      header img {
+        max-width: 95vw;
       }
       .caption {
         font-size: 0.75em;
-      }
-    }
-
-    /* ======================= DESKTOP ONLY SCALE ======================= */
-    @media (min-width: 1025px) {
-      header {
-        justify-content: center;
-        padding-right: 64px; /* leave space for hamburger */
-        max-width: none;
-        margin-top: 6vh;
-      }
-      header a {
-        max-width: 40vw;
-        transform: scale(0.5);
-        transform-origin: center top;
-      }
-      .video-container {
-        width: 35vw;
-        max-width: 35vw;
-        margin-top: 1vh;
-        transform: scale(0.4);
-        transform-origin: center top;
-      }
-      .caption {
-        width: 35vw;
-        max-width: 35vw;
-        font-size: 0.85em;
       }
     }
   </style>
