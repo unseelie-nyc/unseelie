@@ -11,43 +11,58 @@
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #121212;
+      background: #000; /* solid black */
       color: #eee;
       margin: 0;
-      padding: 20px;
+      padding: 0; /* remove all default padding */
       text-align: center;
     }
+
     header {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      margin: 0;
+      padding: 30px 0 10px 0; /* minimal spacing above/below logo */
     }
+
     header img {
-      max-width: 200px;
+      max-width: 500px; /* make logo much larger */
+      width: 80%; /* scale down slightly on small screens */
       height: auto;
-      margin-bottom: 20px;
+      display: block;
+      margin: 0 auto;
     }
+
+    main {
+      margin: 0;
+      padding: 0;
+    }
+
     video {
-      max-width: 90%;
+      width: 100%;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      display: block;
+      margin: 0 auto;
+      border: none;
     }
+
     footer {
-      margin-top: 20px;
+      margin: 30px 0;
       font-size: 1.1em;
       letter-spacing: 2px;
     }
+
     footer .social-links {
       margin-top: 10px;
       font-weight: bold;
     }
+
     footer .social-links a {
       color: #eee;
       text-decoration: none;
       margin: 0 10px;
       font-weight: normal;
     }
+
     footer .social-links a:hover {
       text-decoration: underline;
     }
@@ -56,7 +71,6 @@
 <body>
 
   <header>
-    <!-- Replace "logo.png" with your actual logo filename -->
     <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" />
   </header>
 
