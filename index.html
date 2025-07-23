@@ -3,12 +3,23 @@
 <head>
   <!--  
       © unseelie — all rights reserved
-      https://unseel.ie | https://soundcloud.com/unseelie_nyc
+      https://unseel.ie
   -->
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>unseel.ie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>unseelie | Timeless Collective Library of Imagination</title>
+  <meta name="description" content="unseelie — a timeless collective library of imagination based in NYC. Music, art, and fantasy from unseel.ie" />
+  <meta name="keywords" content="unseelie, fantasy collective, NYC music, contemporary fantasy, soundcloud, bandcamp" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://unseel.ie" />
+
+  <!-- Open Graph for social media preview -->
+  <meta property="og:title" content="unseelie | Timeless Collective Library of Imagination" />
+  <meta property="og:description" content="Explore music, art, and fantasy from unseelie, NYC-based collective." />
+  <meta property="og:url" content="https://unseel.ie" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://unseel.ie/media/unseelie/blue_unseelie.jpg" />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap" rel="stylesheet" />
@@ -23,80 +34,27 @@
       text-align: center;
       height: 100vh;
       width: 100vw;
-      overflow: hidden;
+      overflow: hidden; /* No scroll at all */
       user-select: none;
 
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: flex-start; /* top-aligned */
       align-items: center;
       gap: 1.5vh;
     }
 
-    /* LOGO pinned near top */
-    header {
-      margin-top: 2vh; /* minimal gap from top */
-    }
-    header img {
-      max-width: 40vw; 
-      height: auto;
-      cursor: pointer;
-    }
-
-    /* VIDEO container */
-    .video-container {
-      max-width: 30vw; 
-      width: 30vw;
-      cursor: pointer;
-    }
-    .video-container video {
-      width: 100%;
-      height: auto;
-      display: block;
-      border: none;
-    }
-
-    /* Caption fits EXACTLY video width */
-    .caption {
-      width: 30vw;
-      font-size: 1.2em;
-      letter-spacing: 1.5px;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-
-    /* Links align with video width */
-    footer {
-      width: 30vw;
-      font-size: 0.85em;
-      letter-spacing: 1.5px;
-      margin-top: 0.5vh;
-    }
-    footer .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 4px;
-    }
-    footer .social-links a {
-      color: #eee;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    footer .social-links a:hover {
-      text-decoration: underline;
-    }
-
-    /* ARCHIVE HAMBURGER */
+    /* ARCHIVE HAMBURGER MENU */
     .archive-menu {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 10px;
+      right: 10px;
+      z-index: 10000;
     }
     .hamburger {
       cursor: pointer;
-      width: 28px;
-      height: 22px;
+      width: 26px;
+      height: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -110,19 +68,20 @@
     .dropdown {
       display: none;
       position: absolute;
-      top: 30px;
+      top: 28px;
       right: 0;
       background: #111;
-      padding: 10px;
+      padding: 8px;
       border: 1px solid #333;
       text-align: right;
-      min-width: 150px;
+      min-width: 130px;
     }
     .dropdown a {
       display: block;
       color: #eee;
       text-decoration: none;
-      padding: 6px 0;
+      padding: 4px 0;
+      font-size: 0.85em;
     }
     .dropdown a:hover {
       text-decoration: underline;
@@ -131,29 +90,108 @@
       display: block;
     }
 
-    /* Hidden SoundCloud player */
+    /* LOGO always at top */
+    header {
+      margin-top: 0;
+      user-select: none;
+    }
+    header img {
+      max-width: 35vw;
+      height: auto;
+      cursor: pointer;
+      display: block;
+      user-drag: none;
+      user-select: none;
+    }
+
+    /* VIDEO proportion locked under logo */
+    .video-container {
+      max-width: 30vw;
+      width: 30vw;
+      cursor: pointer;
+      display: block;
+    }
+    .video-container video {
+      width: 100%;
+      height: auto;
+      border: none;
+      user-select: none;
+      user-drag: none;
+    }
+
+    /* CAPTION: forced one line always */
+    .caption {
+      width: 30vw;
+      font-size: 1.2em;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: none;
+    }
+
+    /* Social links smaller */
+    footer {
+      width: 30vw;
+      font-size: 0.7em;
+      letter-spacing: 1.3px;
+      margin-top: 0.3vh;
+      user-select: none;
+    }
+    footer .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3px;
+    }
+    footer .social-links a {
+      color: #eee;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    footer .social-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hidden SoundCloud autoplay */
     .soundcloud-player {
-      width: 0;
-      height: 0;
+      width: 1px;
+      height: 1px;
       opacity: 0;
       position: absolute;
       pointer-events: none;
     }
 
-    /* TABLET */
+    /* --- Responsive tuning for iPhone viewports --- */
+
+    /* Tablet-ish */
     @media (max-width: 1024px) {
       header img { max-width: 55vw; }
-      .video-container { max-width: 45vw; }
-      .caption, footer { width: 45vw; }
+      .video-container { max-width: 48vw; }
+      .caption, footer { width: 48vw; }
     }
 
-    /* MOBILE */
+    /* Mobile iPhone 12/SE */
     @media (max-width: 768px) {
-      header { margin-top: 1vh; }
+      header img { max-width: 70vw; }     /* bigger on mobile */
+      .video-container { max-width: 60vw; } /* video balanced below */
+      .caption, footer { width: 60vw; }
+      .caption {
+        font-size: 1em;
+      }
+      footer {
+        font-size: 0.65em; /* shrink links on mobile */
+      }
+    }
+
+    /* Tiny phones < 400px width */
+    @media (max-width: 400px) {
       header img { max-width: 80vw; }
-      .video-container { max-width: 75vw; }
-      .caption, footer { width: 75vw; font-size: 1em; }
-      .caption { white-space: normal; } /* allow wrap if super tiny screen */
+      .video-container { max-width: 70vw; }
+      .caption, footer { width: 70vw; }
+      .caption {
+        font-size: 0.95em;
+      }
     }
   </style>
 </head>
@@ -161,19 +199,18 @@
 
   <!-- HAMBURGER ARCHIVE MENU -->
   <div class="archive-menu" id="archiveMenu">
-    <div class="hamburger">
+    <div class="hamburger" aria-label="Toggle Archive menu" role="button" tabindex="0">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <div class="dropdown">
+    <div class="dropdown" role="menu" aria-hidden="true" tabindex="-1">
       <strong>Archive</strong>
-      <!-- Empty for now -->
-      <a href="#">Coming soon…</a>
+      <a href="#" role="menuitem" tabindex="-1">Coming soon…</a>
     </div>
   </div>
 
-  <!-- LOGO → clickable -->
+  <!-- LOGO pinned top -->
   <header>
     <a href="https://unseel.ie" target="_blank" rel="noopener">
       <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" draggable="false" />
@@ -181,45 +218,117 @@
   </header>
 
   <!-- CLICKABLE VIDEO -->
-  <a href="https://kud.li/unsl34" class="video-container" target="_blank" rel="noopener">
+  <a href="https://kud.li/unsl34" class="video-container" target="_blank" rel="noopener" aria-label="Watch teaser video">
     <video autoplay muted loop playsinline>
       <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </a>
 
-  <!-- CAPTION exactly under video edges -->
-  <div class="caption">
+  <!-- CAPTION forced one line -->
+  <div class="caption" aria-label="Site tagline">
     ஃ celebrating the timeless collective library of imagination ஃ
   </div>
 
+  <!-- Social links -->
   <footer>
     <div class="social-links">
       <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
       <a href="https://unseelie-nyc.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a> ஃ
       <a href="https://www.ninaprotocol.com/profiles/unseelie.nyc" target="_blank" rel="noopener">Nina</a> ஃ
       <a href="https://www.instagram.com/____unseelie/" target="_blank" rel="noopener">Instagram</a> ஃ
-      <a href="https://twitter.com/____unseelie" target="_blank" rel="noopener">Twitter</a> ஃ
+      <a href="https://twitter.com/____unseelie" target="_blank" rel="noopener">X</a> ஃ
       <a href="https://www.facebook.com/unseelie.nyc/" target="_blank" rel="noopener">Facebook</a> ஃ
       <a href="http://unseel.ie/" target="_blank" rel="noopener">unseel.ie</a>
     </div>
   </footer>
 
-  <!-- Hidden SoundCloud autoplay embed -->
+  <!-- Hidden SoundCloud Player -->
   <iframe 
+    id="sc-player"
     class="soundcloud-player"
-    scrolling="no" frameborder="no" allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2118912432&color=%23a70000&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true">
+    scrolling="no" 
+    frameborder="no" 
+    allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2118912432&color=%23a70000&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
   </iframe>
 
-  <!-- Disable drag + right click + enable hamburger -->
+  <!-- Tap to Enable Sound Button -->
+  <button id="sound-enable-btn" style="
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: #a70000;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 14px;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: none;
+    z-index: 9999;
+    user-select: none;
+    box-shadow: 0 0 10px #a70000;
+  ">
+    Tap to Enable Sound
+  </button>
+
+  <!-- SoundCloud Widget API -->
+  <script src="https://w.soundcloud.com/player/api.js"></script>
   <script>
+    // Disable drag + right click
     document.addEventListener('dragstart', e => e.preventDefault());
     document.addEventListener('contextmenu', e => e.preventDefault());
-    
+
+    // Archive menu toggle
     const menu = document.getElementById('archiveMenu');
     menu.addEventListener('click', () => {
       menu.classList.toggle('active');
+      // Accessibility toggle aria-hidden
+      const dropdown = menu.querySelector('.dropdown');
+      const isActive = menu.classList.contains('active');
+      dropdown.setAttribute('aria-hidden', !isActive);
+      if (isActive) {
+        dropdown.querySelector('a').focus();
+      }
+    });
+
+    // SoundCloud widget setup
+    const btn = document.getElementById('sound-enable-btn');
+    const iframe = document.getElementById("sc-player");
+    const widget = SC.Widget(iframe);
+
+    function showEnableButton() {
+      btn.style.display = 'block';
+    }
+
+    function hideEnableButton() {
+      btn.style.display = 'none';
+    }
+
+    // Try to autoplay on load
+    window.addEventListener("load", () => {
+      widget.bind(SC.Widget.Events.READY, function() {
+        widget.play();
+
+        // Give 2 seconds to detect if it is really playing sound
+        setTimeout(() => {
+          widget.isPaused(function(paused){
+            if (paused) {
+              // Autoplay failed, show the button
+              showEnableButton();
+            } else {
+              hideEnableButton();
+            }
+          });
+        }, 2000);
+      });
+    });
+
+    // When user taps button, play sound and hide button
+    btn.addEventListener('click', () => {
+      widget.play();
+      hideEnableButton();
     });
   </script>
 
