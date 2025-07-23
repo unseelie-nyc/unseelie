@@ -14,35 +14,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap" rel="stylesheet" />
 
   <style>
-    body {
+    html, body {
       font-family: 'Montserrat', sans-serif;
       background: #000; /* solid black */
       color: #eee;
       margin: 0;
       padding: 0;
       text-align: center;
+      height: 100%;
+      overflow: hidden; /* no scrolling */
+      user-select: none; /* no text selection */
     }
 
     header {
       font-family: 'Playfair Display', serif;
       margin: 0;
-      padding: 40px 0 20px 0;
+      padding: 30px 0 10px 0;
     }
 
-    /* Fade-in animation */
     header img {
       max-width: 700px;
       width: 90%;
       height: auto;
       display: block;
       margin: 0 auto;
-      opacity: 0;
-      animation: fadeIn 2.5s ease-out forwards;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1); }
     }
 
     main {
@@ -50,26 +45,33 @@
       padding: 0;
     }
 
-    video {
+    /* Video clickable container */
+    .video-container {
+      display: inline-block;
       max-width: 70%;
+      width: 70%;
+      cursor: pointer;
+    }
+
+    .video-container video {
+      width: 100%;
       height: auto;
       display: block;
-      margin: 20px auto;
       border: none;
     }
 
-    /* Hidden/low-key SoundCloud embed */
-    .soundcloud-player {
-      width: 0;
-      height: 0;
-      opacity: 0;
-      position: absolute;
-      pointer-events: none;
+    /* Text aligned to video width */
+    .caption {
+      max-width: 70%;
+      margin: 20px auto 10px auto;
+      font-size: 1.4em; /* larger than links */
+      letter-spacing: 2px;
     }
 
     footer {
-      margin: 30px 0;
-      font-size: 1.1em;
+      max-width: 70%;
+      margin: 0 auto;
+      font-size: 1em;
       letter-spacing: 2px;
     }
 
@@ -88,34 +90,39 @@
     footer .social-links a:hover {
       text-decoration: underline;
     }
+
+    /* Hidden/low-key SoundCloud embed */
+    .soundcloud-player {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" />
+    <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" draggable="false" />
   </header>
 
   <main>
-    <video autoplay muted loop playsinline>
-      <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    <!-- Make video clickable -->
+    <a href="https://kud.li/unsl34" class="video-container">
+      <video autoplay muted loop playsinline>
+        <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </a>
   </main>
 
-  <!-- Low-key hidden SoundCloud autoplay -->
-  <iframe 
-    class="soundcloud-player"
-    width="0" 
-    height="0" 
-    scrolling="no" 
-    frameborder="no" 
-    allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/unseelie_nyc/sepia-rainbow-4&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false">
-  </iframe>
+  <!-- Caption aligned to video width -->
+  <div class="caption">
+    ஃ celebrating the timeless collective library of imagination ஃ
+  </div>
 
   <footer>
-    <p>ஃ celebrating the timeless collective library of imagination ஃ</p>
     <div class="social-links">
       <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
       <a href="https://unseelie-nyc.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a> ஃ
@@ -126,6 +133,21 @@
       <a href="http://unseel.ie/" target="_blank" rel="noopener">unseel.ie</a>
     </div>
   </footer>
+
+  <!-- Low-key hidden SoundCloud autoplay -->
+  <iframe 
+    class="soundcloud-player"
+    scrolling="no" 
+    frameborder="no" 
+    allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/unseelie_nyc/sepia-rainbow-4&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false">
+  </iframe>
+
+  <!-- Disable drag and context menu -->
+  <script>
+    document.addEventListener('dragstart', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
+  </script>
 
 </body>
 </html>
