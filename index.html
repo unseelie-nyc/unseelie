@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!--  
+      © unseelie — all rights reserved
+      https://unseel.ie | https://soundcloud.com/unseelie_nyc
+  -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>unseel.ie</title>
@@ -14,22 +19,30 @@
       background: #000; /* solid black */
       color: #eee;
       margin: 0;
-      padding: 0; /* remove all default padding */
+      padding: 0;
       text-align: center;
     }
 
     header {
       font-family: 'Playfair Display', serif;
       margin: 0;
-      padding: 30px 0 10px 0; /* minimal spacing above/below logo */
+      padding: 40px 0 20px 0;
     }
 
+    /* Fade-in animation */
     header img {
-      max-width: 500px; /* make logo much larger */
-      width: 80%; /* scale down slightly on small screens */
+      max-width: 700px;
+      width: 90%;
       height: auto;
       display: block;
       margin: 0 auto;
+      opacity: 0;
+      animation: fadeIn 2.5s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     main {
@@ -38,10 +51,10 @@
     }
 
     video {
-      width: 100%;
+      max-width: 70%;
       height: auto;
       display: block;
-      margin: 0 auto;
+      margin: 20px auto;
       border: none;
     }
 
