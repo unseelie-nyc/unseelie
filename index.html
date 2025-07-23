@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--  
-      © unseelie — all rights reserved
-      https://unseel.ie
-  -->
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>unseelie | Timeless Collective Library of Imagination</title>
-  <meta name="description" content="unseelie — a timeless collective library of imagination based in NYC. Music, art, and fantasy from unseel.ie" />
-  <meta name="keywords" content="unseelie, fantasy collective, NYC music, contemporary fantasy, soundcloud, bandcamp" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://unseel.ie" />
-
-  <!-- Open Graph for social media preview -->
-  <meta property="og:title" content="unseelie | Timeless Collective Library of Imagination" />
-  <meta property="og:description" content="Explore music, art, and fantasy from unseelie, NYC-based collective." />
-  <meta property="og:url" content="https://unseel.ie" />
+  <title>unseelie | timeless collective library of imagination</title>
+  
+  <!-- Basic SEO -->
+  <meta name="description" content="unseelie is a timeless collective library of imagination based in NYC, sharing contemporary fantasy and creative media." />
+  <meta name="keywords" content="unseelie, fantasy collective, NYC art collective, contemporary fantasy, imaginative library, music, video, dasychira, sentinel, QUALIATIK, himera, yikii, galen tipton" />
+  <meta name="author" content="unseelie collective" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="unseelie | timeless collective library of imagination" />
+  <meta property="og:description" content="unseelie is a timeless collective library of imagination based in NYC, sharing contemporary fantasy and creative media." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://unseel.ie" />
   <meta property="og:image" content="https://unseel.ie/media/unseelie/blue_unseelie.jpg" />
-
-  <!-- Google Fonts -->
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="unseelie | timeless collective library of imagination" />
+  <meta name="twitter:description" content="unseelie is a timeless collective library of imagination based in NYC, sharing contemporary fantasy and creative media." />
+  <meta name="twitter:image" content="https://unseel.ie/media/unseelie/blue_unseelie.jpg" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://unseel.ie" />
+  
+  <!-- Google Site Verification (uncomment and add your code) -->
+  <!-- <meta name="google-site-verification" content="your-google-verification-code" /> -->
+  
+  <!-- Fonts and styles -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap" rel="stylesheet" />
 
   <style>
@@ -34,69 +42,75 @@
       text-align: center;
       height: 100vh;
       width: 100vw;
-      overflow: hidden; /* No scroll at all */
+      overflow: hidden;
       user-select: none;
 
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* top-aligned */
+      justify-content: flex-start;
       align-items: center;
-      gap: 1.5vh;
+      gap: 1vh;
     }
 
-    /* ARCHIVE HAMBURGER MENU */
+    /* Archive menu */
     .archive-menu {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 10000;
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999;
+      user-select: none;
     }
-    .hamburger {
+    .archive-menu .hamburger {
       cursor: pointer;
-      width: 26px;
-      height: 20px;
+      width: 28px;
+      height: 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .hamburger span {
-      display: block;
-      height: 3px;
-      background: #eee;
-      border-radius: 2px;
-    }
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 28px;
-      right: 0;
-      background: #111;
-      padding: 8px;
-      border: 1px solid #333;
-      text-align: right;
-      min-width: 130px;
-    }
-    .dropdown a {
-      display: block;
-      color: #eee;
-      text-decoration: none;
-      padding: 4px 0;
-      font-size: 0.85em;
-    }
-    .dropdown a:hover {
-      text-decoration: underline;
+    .archive-menu .hamburger span {
+      height: 4px;
+      background: #a70000;
+      border-radius: 3px;
     }
     .archive-menu.active .dropdown {
+      max-height: 300px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .archive-menu .dropdown {
+      background: #111;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.35s ease;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-size: 0.9em;
+      padding: 10px;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: 0 0 15px #a70000aa;
+      text-align: left;
+      width: 180px;
+    }
+    .archive-menu .dropdown a {
+      color: #eee;
       display: block;
+      padding: 6px 0;
+      text-decoration: none;
+    }
+    .archive-menu .dropdown a:hover {
+      text-decoration: underline;
     }
 
-    /* LOGO always at top */
+    /* Logo */
     header {
       margin-top: 0;
       user-select: none;
+      flex-shrink: 0;
     }
     header img {
-      max-width: 35vw;
+      max-width: 25vw;  /* smaller than video */
       height: auto;
       cursor: pointer;
       display: block;
@@ -104,12 +118,13 @@
       user-select: none;
     }
 
-    /* VIDEO proportion locked under logo */
+    /* Video container */
     .video-container {
-      max-width: 30vw;
+      max-width: 30vw; /* bigger than logo */
       width: 30vw;
       cursor: pointer;
       display: block;
+      flex-shrink: 0;
     }
     .video-container video {
       width: 100%;
@@ -117,23 +132,25 @@
       border: none;
       user-select: none;
       user-drag: none;
+      display: block;
     }
 
-    /* CAPTION: forced one line always */
+    /* Caption (celebrating...) */
     .caption {
       width: 30vw;
-      font-size: 1.2em;
+      font-size: 1.25em;
       letter-spacing: 1.5px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       user-select: none;
+      margin-top: 0.3vh;
     }
 
-    /* Social links smaller */
+    /* Social links smaller and narrower */
     footer {
       width: 30vw;
-      font-size: 0.7em;
+      font-size: 0.6em;
       letter-spacing: 1.3px;
       margin-top: 0.3vh;
       user-select: none;
@@ -153,7 +170,7 @@
       text-decoration: underline;
     }
 
-    /* Hidden SoundCloud autoplay */
+    /* Hidden SoundCloud player */
     .soundcloud-player {
       width: 1px;
       height: 1px;
@@ -162,33 +179,35 @@
       pointer-events: none;
     }
 
-    /* --- Responsive tuning for iPhone viewports --- */
+    /* Responsive */
 
-    /* Tablet-ish */
     @media (max-width: 1024px) {
-      header img { max-width: 55vw; }
-      .video-container { max-width: 48vw; }
-      .caption, footer { width: 48vw; }
+      header img { max-width: 40vw; }
+      .video-container { max-width: 50vw; width: 50vw; }
+      .caption, footer { width: 50vw; }
+      .caption { font-size: 1.1em; }
+      footer { font-size: 0.55em; }
     }
 
-    /* Mobile iPhone 12/SE */
     @media (max-width: 768px) {
-      header img { max-width: 70vw; }     /* bigger on mobile */
-      .video-container { max-width: 60vw; } /* video balanced below */
-      .caption, footer { width: 60vw; }
+      header {
+        margin-top: 0;
+      }
+      header img { max-width: 70vw; }
+      .video-container { max-width: 65vw; width: 65vw; }
+      .caption, footer { width: 65vw; }
       .caption {
         font-size: 1em;
       }
       footer {
-        font-size: 0.65em; /* shrink links on mobile */
+        font-size: 0.5em;
       }
     }
 
-    /* Tiny phones < 400px width */
     @media (max-width: 400px) {
       header img { max-width: 80vw; }
-      .video-container { max-width: 70vw; }
-      .caption, footer { width: 70vw; }
+      .video-container { max-width: 75vw; width: 75vw; }
+      .caption, footer { width: 75vw; }
       .caption {
         font-size: 0.95em;
       }
@@ -197,12 +216,10 @@
 </head>
 <body>
 
-  <!-- HAMBURGER ARCHIVE MENU -->
-  <div class="archive-menu" id="archiveMenu">
+  <!-- Archive Hamburger Menu -->
+  <div class="archive-menu" id="archiveMenu" aria-label="Archive menu" role="navigation">
     <div class="hamburger" aria-label="Toggle Archive menu" role="button" tabindex="0">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
     <div class="dropdown" role="menu" aria-hidden="true" tabindex="-1">
       <strong>Archive</strong>
@@ -210,14 +227,14 @@
     </div>
   </div>
 
-  <!-- LOGO pinned top -->
+  <!-- Logo -->
   <header>
-    <a href="https://unseel.ie" target="_blank" rel="noopener">
+    <a href="https://unseel.ie" target="_blank" rel="noopener" aria-label="Home">
       <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" draggable="false" />
     </a>
   </header>
 
-  <!-- CLICKABLE VIDEO -->
+  <!-- Video clickable -->
   <a href="https://kud.li/unsl34" class="video-container" target="_blank" rel="noopener" aria-label="Watch teaser video">
     <video autoplay muted loop playsinline>
       <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
@@ -225,12 +242,12 @@
     </video>
   </a>
 
-  <!-- CAPTION forced one line -->
+  <!-- Celebrating text -->
   <div class="caption" aria-label="Site tagline">
     ஃ celebrating the timeless collective library of imagination ஃ
   </div>
 
-  <!-- Social links -->
+  <!-- Social Links -->
   <footer>
     <div class="social-links">
       <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
@@ -273,18 +290,12 @@
     Tap to Enable Sound
   </button>
 
-  <!-- SoundCloud Widget API -->
   <script src="https://w.soundcloud.com/player/api.js"></script>
   <script>
-    // Disable drag + right click
-    document.addEventListener('dragstart', e => e.preventDefault());
-    document.addEventListener('contextmenu', e => e.preventDefault());
-
     // Archive menu toggle
     const menu = document.getElementById('archiveMenu');
     menu.addEventListener('click', () => {
       menu.classList.toggle('active');
-      // Accessibility toggle aria-hidden
       const dropdown = menu.querySelector('.dropdown');
       const isActive = menu.classList.contains('active');
       dropdown.setAttribute('aria-hidden', !isActive);
@@ -306,16 +317,13 @@
       btn.style.display = 'none';
     }
 
-    // Try to autoplay on load
     window.addEventListener("load", () => {
       widget.bind(SC.Widget.Events.READY, function() {
         widget.play();
 
-        // Give 2 seconds to detect if it is really playing sound
         setTimeout(() => {
           widget.isPaused(function(paused){
             if (paused) {
-              // Autoplay failed, show the button
               showEnableButton();
             } else {
               hideEnableButton();
@@ -325,7 +333,6 @@
       });
     });
 
-    // When user taps button, play sound and hide button
     btn.addEventListener('click', () => {
       widget.play();
       hideEnableButton();
