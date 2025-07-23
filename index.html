@@ -5,26 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>unseelie | timeless collective library of imagination</title>
 
-  <!-- SEO Meta -->
+  <!-- SEO -->
   <meta name="description" content="unseelie is a timeless collective library of imagination based in NYC, sharing contemporary fantasy, multimedia art, and experimental sound." />
-  <meta name="keywords" content="unseelie, NYC art collective, contemporary fantasy, imaginative library, dasychira, sentinel, QUALIATIK, himera, yikii, galen tipton, experimental music, fantasy NYC, sound art, multimedia collective" />
+  <meta name="keywords" content="unseelie, NYC art collective, contemporary fantasy, dasychira, sentinel, QUALIATIK, himera, yikii, galen tipton, experimental music" />
   <meta name="author" content="unseelie collective" />
   <link rel="canonical" href="https://unseel.ie" />
 
-  <!-- Open Graph -->
+  <!-- OG + Twitter -->
   <meta property="og:title" content="unseelie | timeless collective library of imagination" />
   <meta property="og:description" content="a timeless collective library of imagination based in NYC" />
-  <meta property="og:type" content="website" />
   <meta property="og:url" content="https://unseel.ie" />
   <meta property="og:image" content="https://unseel.ie/media/unseelie/blue_unseelie.jpg" />
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="unseelie | timeless collective library of imagination" />
-  <meta name="twitter:description" content="a timeless collective library of imagination based in NYC" />
-  <meta name="twitter:image" content="https://unseel.ie/media/unseelie/blue_unseelie.jpg" />
 
-  <!-- Structured JSON-LD -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,7 +44,7 @@
   }
   </script>
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 
   <style>
@@ -70,11 +64,11 @@
       align-items: center;
     }
 
-    /* Hamburger menu */
+    /* HAMBURGER LOCKED TOP-RIGHT */
     .archive-menu {
       position: fixed;
-      top: 12px;
-      right: 15px;
+      top: 10px;
+      right: 10px;
       z-index: 9999;
     }
     .archive-menu .hamburger {
@@ -90,25 +84,25 @@
       background: #fff;
       border-radius: 2px;
     }
-    .archive-menu.active .dropdown {
-      max-height: 300px;
-      opacity: 1;
-      pointer-events: auto;
-    }
     .archive-menu .dropdown {
       background: #111;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, opacity 0.3s ease;
-      border-radius: 5px;
       margin-top: 8px;
+      border-radius: 5px;
       font-size: 0.85em;
       padding: 8px;
-      opacity: 0;
-      pointer-events: none;
       box-shadow: 0 0 8px #000;
       text-align: left;
-      width: 160px;
+      width: 150px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+    .archive-menu.active .dropdown {
+      max-height: 200px;
+      opacity: 1;
+      pointer-events: auto;
     }
     .archive-menu .dropdown a {
       color: #eee;
@@ -118,23 +112,24 @@
     }
     .archive-menu .dropdown a:hover { text-decoration: underline; }
 
-    /* Logo */
+    /* LOGO */
     header {
       margin-top: 0;
       flex-shrink: 0;
     }
     header img {
-      max-width: 30vw; /* desktop balanced */
+      max-width: 28vw;
       height: auto;
       cursor: pointer;
     }
 
-    /* Video container */
+    /* VIDEO */
     .video-container {
       cursor: pointer;
       flex-shrink: 0;
       width: 40vw;
       max-width: 40vw;
+      margin-top: 0.5vh;
     }
     .video-container video {
       width: 100%;
@@ -142,21 +137,20 @@
       display: block;
     }
 
-    /* Caption */
+    /* CAPTION */
     .caption {
-      font-size: 1.3em;
-      letter-spacing: 1.2px;
+      margin-top: 0.8vh;
+      font-size: 1.2em;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: clip;
-      margin-top: 0.5vh;
     }
 
-    /* Social links */
+    /* SOCIAL LINKS */
     footer {
-      font-size: 0.55em;
+      margin-top: 0.4vh;
+      font-size: 0.6em;
       letter-spacing: 1px;
-      margin-top: 1vh;
     }
     footer .social-links {
       display: flex;
@@ -171,9 +165,9 @@
     }
     footer .social-links a:hover { text-decoration: underline; }
 
-    /* Tap anywhere */
+    /* TAP ANYWHERE */
     .tap-text {
-      margin-top: 0.8vh;
+      margin-top: 0.6vh;
       font-size: 0.55em;
       letter-spacing: 1px;
       animation: glow 1.5s ease-in-out infinite alternate;
@@ -183,7 +177,7 @@
       to { opacity: 1; }
     }
 
-    /* Hidden SoundCloud player */
+    /* HIDDEN SOUNDCLOUD */
     .soundcloud-player {
       width: 1px;
       height: 1px;
@@ -192,26 +186,24 @@
       pointer-events: none;
     }
 
-    /* MOBILE */
+    /* MOBILE FIXES */
     @media (max-width: 768px) {
-      .archive-menu { top: 10px; right: 10px; } /* stays locked top right */
-      header img { max-width: 75vw; } /* ~33% larger */
-      .video-container { width: 95vw; max-width: 95vw; }
-      .video-container video { border-radius: 0; }
-      .caption { font-size: 1em; width: 95vw; white-space: nowrap; }
-      footer { font-size: 0.45em; width: 95vw; }
+      header img { max-width: 70vw; } /* larger logo mobile */
+      .video-container { width: 92vw; max-width: 92vw; }
+      .caption { font-size: 1em; width: 92vw; white-space: nowrap; }
+      footer { font-size: 0.5em; }
     }
 
-    /* tiny phones */
+    /* TINY PHONES */
     @media (max-width: 400px) {
-      header img { max-width: 80vw; }
-      .caption { font-size: 0.9em; }
+      header img { max-width: 75vw; }
+      .caption { font-size: 0.95em; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hamburger -->
+  <!-- HAMBURGER MENU -->
   <div class="archive-menu" id="archiveMenu">
     <div class="hamburger"><span></span><span></span><span></span></div>
     <div class="dropdown">
@@ -220,28 +212,24 @@
     </div>
   </div>
 
-  <!-- Logo -->
+  <!-- LOGO -->
   <header>
     <a href="https://unseel.ie" target="_blank" rel="noopener">
       <img src="media/unseelie/blue_unseelie.jpg" alt="unseelie logo" />
     </a>
   </header>
 
-  <!-- Video -->
+  <!-- VIDEO -->
   <a href="https://kud.li/unsl34" class="video-container" target="_blank" rel="noopener">
     <video autoplay muted loop playsinline>
       <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
     </video>
   </a>
 
-  <!-- Caption -->
+  <!-- CAPTION -->
   <div class="caption">ஃ celebrating the timeless collective library of imagination ஃ</div>
 
-  <!-- Tap anywhere -->
-  <div class="tap-text">tap anywhere to enable sound</div>
-  <br><br>
-
-  <!-- Social Links -->
+  <!-- SOCIAL LINKS under caption -->
   <footer>
     <div class="social-links">
       <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
@@ -254,7 +242,10 @@
     </div>
   </footer>
 
-  <!-- Hidden SoundCloud player -->
+  <!-- TAP TEXT BELOW LINKS -->
+  <div class="tap-text">tap anywhere to enable sound</div>
+
+  <!-- HIDDEN SOUNDCLOUD PLAYER -->
   <iframe 
     id="sc-player"
     class="soundcloud-player"
@@ -286,16 +277,6 @@
 
     document.body.addEventListener('click', enableSound);
     document.body.addEventListener('touchstart', enableSound);
-
-    window.addEventListener("load", () => {
-      widget.bind(SC.Widget.Events.READY, function() {
-        setTimeout(() => {
-          widget.isPaused(function(paused){
-            if (!paused) document.querySelector('.tap-text').style.display = 'none';
-          });
-        }, 2000);
-      });
-    });
   </script>
 </body>
 </html>
