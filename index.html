@@ -6,6 +6,9 @@
   
   <title>unseelie ஃ timeless collective library of imagination</title>
 
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/x-icon" href="media/unseelie/favicon.ico" />
+
   <!-- ✅ SEO -->
   <meta name="description" content="unseelie is a timeless collective library of imagination based in NYC, sharing contemporary fantasy, multimedia art, and experimental sound." />
   <meta name="keywords" content="unseelie, NYC art collective, contemporary fantasy, dasychira, sentinel, QUALIATIK, himera, yikii, galen tipton, experimental music" />
@@ -64,6 +67,9 @@
       justify-content: flex-start;
       align-items: center;
       position: relative;
+
+      /* ✅ Custom cursor */
+      cursor: url('media/unseelie/mouse.cur'), auto;
     }
 
     /* ✅ Hamburger top-left */
@@ -76,16 +82,10 @@
     }
     .archive-menu .hamburger {
       cursor: pointer;
-      width: 26px;
-      height: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .archive-menu .hamburger span {
-      height: 3px;
-      background: #fff;
-      border-radius: 2px;
+      width: 30px;
+      height: 30px;
+      background: url('media/unseelie/hamburger.png') no-repeat center/contain;
+      display: block;
     }
     .archive-menu .dropdown {
       background: #111;
@@ -117,7 +117,7 @@
 
     /* ✅ Desktop layout */
     header {
-      margin-top: 3vh; /* bump upward so all fits */
+      margin-top: 3vh;
       flex-shrink: 0;
       width: 100%;
       display: flex;
@@ -125,7 +125,7 @@
       position: relative;
     }
     header img {
-      max-width: 22vw; /* slightly larger logo now */
+      max-width: 22vw; /* slightly larger logo */
       height: auto;
       cursor: pointer;
       display: block;
@@ -148,7 +148,7 @@
     .caption {
       margin-top: 1vh;
       font-size: 0.85em;
-      white-space: nowrap; /* single line by default */
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: clip;
       width: 35vw;
@@ -197,24 +197,24 @@
       pointer-events: none;
     }
 
-    /* ✅ MOBILE: keep caption single line by making it smaller */
+    /* ✅ MOBILE */
     @media (max-width: 1024px) {
       header {
         margin-top: 5vh;
       }
       header img {
-        max-width: 60vw; /* smaller logo on mobile */
+        max-width: 60vw;
       }
       .video-container {
-        width: 95vw; /* nearly edge-to-edge video */
+        width: 95vw;
         max-width: 95vw;
         margin-top: 2vh;
       }
       .caption {
         width: 95vw;
         max-width: 95vw;
-        font-size: 0.7em; /* smaller so it fits on one line */
-        white-space: nowrap; /* force single line */
+        font-size: 0.7em;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
@@ -231,7 +231,7 @@
         max-width: 65vw; 
       }
       .caption {
-        font-size: 0.65em; /* even smaller on very narrow screens */
+        font-size: 0.65em;
         width: 95vw;
         max-width: 95vw;
         white-space: nowrap;
@@ -245,7 +245,7 @@
 
   <!-- ✅ HAMBURGER MENU -->
   <div class="archive-menu" id="archiveMenu">
-    <div class="hamburger" aria-label="Archive menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    <div class="hamburger" aria-label="Archive menu" role="button" tabindex="0"></div>
     <div class="dropdown" role="menu" aria-hidden="true">
       <strong>archive</strong>
       <a href="#" role="menuitem" tabindex="-1">coming soon…</a>
