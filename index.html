@@ -16,31 +16,33 @@
   <style>
     html, body {
       font-family: 'Montserrat', sans-serif;
-      background: #000; /* solid black */
+      background: #000;
       color: #eee;
       margin: 0;
       padding: 0;
       text-align: center;
-      height: 100vh; /* lock full screen */
+      height: 100vh;
       width: 100vw;
-      overflow: hidden; /* no scroll */
-      user-select: none; /* no selection */
+      overflow: hidden;
+      user-select: none;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* evenly space logo, video, footer */
+      justify-content: center;
       align-items: center;
+      gap: 2vh; /* small spacing between elements */
     }
 
+    /* LOGO: large + dominant */
     header img {
-      max-width: 400px; /* logo size tuned for fit */
-      width: 60%;
+      max-width: 65vw;  /* bigger */
       height: auto;
+      flex-shrink: 0;
     }
 
-    /* Video container takes moderate height so footer still fits */
+    /* VIDEO: much smaller now */
     .video-container {
-      max-width: 60%;
-      width: 60%;
+      max-width: 35vw;  /* shrink */
+      width: 35vw;
       cursor: pointer;
       flex-shrink: 0;
     }
@@ -51,28 +53,35 @@
       border: none;
     }
 
+    /* Caption aligned to video edges */
     .caption {
-      font-size: 1.3em;
+      width: 35vw;        /* matches video width */
+      margin: 0 auto 0 auto;
+      font-size: 1.2em;   /* larger than link text */
       letter-spacing: 2px;
-      margin: 8px 0;
+      line-height: 1.4em;
     }
 
+    /* Footer links also aligned to video width */
     footer {
-      font-size: 0.9em;
+      width: 35vw;
+      margin: 0 auto;
+      font-size: 0.85em;
       letter-spacing: 2px;
-      margin-bottom: 12px;
     }
 
     footer .social-links {
       margin-top: 6px;
       font-weight: bold;
+      display: flex;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     footer .social-links a {
       color: #eee;
       text-decoration: none;
-      margin: 0 8px;
+      margin: 0 6px;
       font-weight: normal;
       white-space: nowrap;
     }
@@ -80,7 +89,7 @@
       text-decoration: underline;
     }
 
-    /* Hide SoundCloud player visually */
+    /* Hidden SoundCloud player */
     .soundcloud-player {
       width: 0;
       height: 0;
@@ -88,16 +97,29 @@
       position: absolute;
       pointer-events: none;
     }
+
+    /* Responsive fallback for very small screens */
+    @media (max-width: 1024px) {
+      header img { max-width: 70vw; }
+      .video-container { max-width: 50vw; }
+      .caption, footer { width: 50vw; }
+    }
+
+    @media (max-width: 768px) {
+      header img { max-width: 80vw; }
+      .video-container { max-width: 60vw; }
+      .caption, footer { width: 60vw; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Logo -->
+  <!-- LARGE LOGO -->
   <header>
     <img src="media/unseelie/blue_unseelie.jpg" alt="unseel.ie logo" draggable="false" />
   </header>
 
-  <!-- Clickable Video -->
+  <!-- SMALLER CLICKABLE VIDEO -->
   <a href="https://kud.li/unsl34" class="video-container">
     <video autoplay muted loop playsinline>
       <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
@@ -105,23 +127,24 @@
     </video>
   </a>
 
-  <!-- Caption + Links (fits with no scroll) -->
-  <div>
-    <div class="caption">ஃ celebrating the timeless collective library of imagination ஃ</div>
-    <footer>
-      <div class="social-links">
-        <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
-        <a href="https://unseelie-nyc.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a> ஃ
-        <a href="https://www.ninaprotocol.com/profiles/unseelie.nyc" target="_blank" rel="noopener">Nina</a> ஃ
-        <a href="https://www.instagram.com/____unseelie/" target="_blank" rel="noopener">Instagram</a> ஃ
-        <a href="https://twitter.com/____unseelie" target="_blank" rel="noopener">Twitter</a> ஃ
-        <a href="https://www.facebook.com/unseelie.nyc/" target="_blank" rel="noopener">Facebook</a> ஃ
-        <a href="http://unseel.ie/" target="_blank" rel="noopener">unseel.ie</a>
-      </div>
-    </footer>
+  <!-- CAPTION + LINKS aligned to video width -->
+  <div class="caption">
+    ஃ celebrating the timeless collective library of imagination ஃ
   </div>
 
-  <!-- Hidden SoundCloud autoplay using your embed -->
+  <footer>
+    <div class="social-links">
+      <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
+      <a href="https://unseelie-nyc.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a> ஃ
+      <a href="https://www.ninaprotocol.com/profiles/unseelie.nyc" target="_blank" rel="noopener">Nina</a> ஃ
+      <a href="https://www.instagram.com/____unseelie/" target="_blank" rel="noopener">Instagram</a> ஃ
+      <a href="https://twitter.com/____unseelie" target="_blank" rel="noopener">Twitter</a> ஃ
+      <a href="https://www.facebook.com/unseelie.nyc/" target="_blank" rel="noopener">Facebook</a> ஃ
+      <a href="http://unseel.ie/" target="_blank" rel="noopener">unseel.ie</a>
+    </div>
+  </footer>
+
+  <!-- Hidden SoundCloud autoplay embed -->
   <iframe 
     class="soundcloud-player"
     scrolling="no" frameborder="no" allow="autoplay"
