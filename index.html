@@ -65,11 +65,12 @@
       position: relative;
     }
 
-    /* HAMBURGER LOCKED TOP-RIGHT */
+    /* HAMBURGER LOCKED TOP-LEFT */
     .archive-menu {
       position: fixed;
       top: 10px;
-      right: 10px;
+      left: 10px;
+      right: auto;
       z-index: 9999;
       user-select: none;
     }
@@ -125,7 +126,7 @@
       z-index: 1; /* below hamburger */
     }
     header img {
-      max-width: 55vw; /* 10% bigger than previous 50vw */
+      max-width: 55vw;
       height: auto;
       cursor: pointer;
       display: block;
@@ -150,7 +151,7 @@
     /* CAPTION */
     .caption {
       margin-top: 0.8vh;
-      font-size: 1.05em; /* smaller to fit one line */
+      font-size: 1.05em;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -181,7 +182,7 @@
 
     /* TAP ANYWHERE */
     .tap-text {
-      margin-top: 1vh; /* a bit more space below social links */
+      margin-top: 1vh;
       font-size: 0.55em;
       letter-spacing: 1px;
       animation: glow 1.5s ease-in-out infinite alternate;
@@ -201,26 +202,25 @@
       pointer-events: none;
     }
 
-    /* MOBILE FIXES */
-    @media (max-width: 768px) {
+    /* MOBILE & IPAD FIXES */
+    @media (max-width: 1024px) {
       header img {
-        max-width: 69.3vw; /* 10% larger than previous 63vw */
+        max-width: 69vw;
       }
       .video-container {
-        width: 92vw;
-        max-width: 92vw;
+        width: 80vw;
+        max-width: 80vw;
       }
       .caption {
         font-size: 0.95em;
-        width: 92vw;
-        white-space: nowrap;
-        max-width: 92vw;
+        max-width: 80vw;
+        width: 80vw;
       }
       footer {
-        font-size: 0.5em;
+        font-size: 0.55em;
       }
       .tap-text {
-        margin-top: 2vh; /* more breathing room */
+        margin-top: 2vh;
       }
     }
 
@@ -254,7 +254,7 @@
   </header>
 
   <!-- VIDEO -->
-  <a href="https://kud.li/unsl34" class="video-container" target="_blank" rel="noopener">
+  <a href="https://kud.li/unsls34" class="video-container" target="_blank" rel="noopener">
     <video autoplay muted loop playsinline>
       <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
     </video>
