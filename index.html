@@ -116,9 +116,13 @@
     header {
       margin-top: 0;
       flex-shrink: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: relative;
     }
     header img {
-      max-width: 50vw; /* desktop logo size: about 2x bigger */
+      max-width: 50vw; /* desktop logo size */
       height: auto;
       cursor: pointer;
       display: block;
@@ -131,6 +135,8 @@
       width: 40vw;
       max-width: 40vw;
       margin-top: 0.5vh;
+      margin-left: auto;
+      margin-right: auto;
     }
     .video-container video {
       width: 100%;
@@ -171,7 +177,7 @@
 
     /* TAP ANYWHERE */
     .tap-text {
-      margin-top: 0.6vh;
+      margin-top: 1vh; /* a bit more space below social links */
       font-size: 0.55em;
       letter-spacing: 1px;
       animation: glow 1.5s ease-in-out infinite alternate;
@@ -193,7 +199,7 @@
     /* MOBILE FIXES */
     @media (max-width: 768px) {
       header img {
-        max-width: 90vw; /* mobile logo size: about 3x bigger */
+        max-width: 63vw; /* 70% of previous 90vw */
       }
       .video-container {
         width: 92vw;
@@ -208,12 +214,15 @@
       footer {
         font-size: 0.5em;
       }
+      .tap-text {
+        margin-top: 2vh; /* more breathing room */
+      }
     }
 
     /* TINY PHONES */
     @media (max-width: 400px) {
       header img {
-        max-width: 95vw;
+        max-width: 70vw;
       }
       .caption {
         font-size: 0.95em;
@@ -225,10 +234,10 @@
 
   <!-- HAMBURGER MENU -->
   <div class="archive-menu" id="archiveMenu">
-    <div class="hamburger"><span></span><span></span><span></span></div>
-    <div class="dropdown">
+    <div class="hamburger" aria-label="Archive menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    <div class="dropdown" role="menu" aria-hidden="true">
       <strong>archive</strong>
-      <a href="#">coming soon…</a>
+      <a href="#" role="menuitem" tabindex="-1">coming soon…</a>
     </div>
   </div>
 
