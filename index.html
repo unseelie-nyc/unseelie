@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <!-- Prevent zoom on desktop/mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>unseelie | timeless collective library of imagination</title>
 
   <!-- SEO and meta tags here... -->
@@ -27,12 +28,12 @@
       align-items: center;
     }
 
-    /* HAMBURGER LOCKED TOP-RIGHT - FIXED AND NO MARGINS */
+    /* HAMBURGER LOCKED TOP-RIGHT */
     .archive-menu {
       position: fixed;
       top: 10px;
       right: 10px;
-      z-index: 99999;  /* very high to ensure it’s always on top */
+      z-index: 99999; 
       user-select: none;
       margin: 0;
       padding: 0;
@@ -69,6 +70,9 @@
       pointer-events: none;
       transition: max-height 0.3s ease, opacity 0.3s ease;
       user-select: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
     }
     .archive-menu.active .dropdown {
       max-height: 200px;
@@ -85,14 +89,14 @@
 
     /* LOGO */
     header {
-      margin: 0; /* Remove margin so no overlap */
-      padding-top: 10px; /* some spacing from top */
+      margin: 0;
+      padding-top: 10px;
       flex-shrink: 0;
       user-select: none;
       width: 100%;
       display: flex;
       justify-content: center;
-      z-index: 1; /* behind hamburger */
+      z-index: 1;
     }
     header img {
       max-width: 37vw;
@@ -120,21 +124,22 @@
     /* CAPTION */
     .caption {
       margin-top: 0.8vh;
-      font-size: 1em;  /* smaller font so it fits */
-      white-space: normal; /* allow wrapping */
+      font-size: 0.9em;
+      white-space: normal;
       max-width: 40vw;
       margin-left: auto;
       margin-right: auto;
       user-select: none;
+      word-break: break-word;
     }
 
     /* SOCIAL LINKS */
     footer {
       margin-top: 0.4vh;
-      font-size: 0.55em; /* smaller font */
+      font-size: 0.55em;
       letter-spacing: 1px;
       user-select: none;
-      margin-bottom: 0.4rem; /* half the space before tap text */
+      margin-bottom: 0.4rem;
       display: flex;
       justify-content: center;
     }
@@ -177,16 +182,43 @@
 
     /* MOBILE FIXES */
     @media (max-width: 768px) {
-      header img { max-width: 70vw; } /* bigger logo on mobile */
+      header img { max-width: 70vw; }
       .video-container { width: 92vw; max-width: 92vw; }
       .caption { font-size: 0.85em; max-width: 92vw; white-space: normal; }
       footer { font-size: 0.5em; margin-bottom: 0.2rem; }
+      /* Fix hamburger top right for mobile */
+      .archive-menu {
+        top: 10px;
+        right: 10px;
+      }
     }
 
     /* TINY PHONES */
     @media (max-width: 400px) {
       header img { max-width: 75vw; }
       .caption { font-size: 0.8em; }
+    }
+
+    /* DESKTOP LARGE SCREENS (e.g. MacBook 1440px) */
+    @media (min-width: 1200px) {
+      header img {
+        max-width: 25vw; /* bigger logo */
+      }
+      .video-container {
+        width: 45vw;
+        max-width: 45vw;
+      }
+      .caption {
+        font-size: 1.1em;
+        max-width: 45vw;
+      }
+      footer {
+        font-size: 0.65em;
+      }
+      .tap-text {
+        font-size: 0.65em;
+        margin-bottom: 2rem;
+      }
     }
   </style>
 </head>
@@ -250,6 +282,11 @@
     menu.addEventListener('click', (e) => {
       menu.classList.toggle('active');
       e.stopPropagation(); 
+    });
+
+    // Close menu on outside click
+    document.body.addEventListener('click', () => {
+      menu.classList.remove('active');
     });
 
     const iframe = document.getElementById("sc-player");
