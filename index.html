@@ -51,14 +51,14 @@
   <style>
     html, body {
       font-family: 'Montserrat', sans-serif;
-      background: #000; /* black background */
+      background: #000;
       color: #eee;
       margin: 0;
       padding: 0;
       text-align: center;
       height: 100vh;
       width: 100vw;
-      overflow: hidden; /* No scrollbars */
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -66,17 +66,13 @@
       position: relative;
     }
 
-    /* Hamburger fixed top left */
+    /* ✅ Hamburger top-left */
     .archive-menu {
       position: fixed;
       top: 10px;
       left: 10px;
-      right: auto;
       z-index: 9999;
       user-select: none;
-      padding-left: 10px;
-      background: transparent;
-      margin: 0;
     }
     .archive-menu .hamburger {
       cursor: pointer;
@@ -119,58 +115,50 @@
     }
     .archive-menu .dropdown a:hover { text-decoration: underline; }
 
-    /* HEADER and LOGO stacked centered */
+    /* ✅ Desktop layout */
     header {
-      margin-top: 6vh;
+      margin-top: 3vh; /* bump upward so all fits */
       flex-shrink: 0;
       width: 100%;
       display: flex;
       justify-content: center;
       position: relative;
-      z-index: 1;
     }
     header img {
-      max-width: 24vw; /* desktop: ~33% bigger than 18vw */
+      max-width: 20vw; /* smaller so more fits on page */
       height: auto;
       cursor: pointer;
       display: block;
       user-select: none;
-      transition: max-width 0.3s ease;
     }
 
-    /* VIDEO stacked below logo */
     .video-container {
       cursor: pointer;
       flex-shrink: 0;
-      margin-top: 1.5vh;
-      width: 40vw; /* desktop: ~33% bigger than 30vw */
-      max-width: 40vw;
-      transition: width 0.3s ease;
+      margin-top: 1vh;
+      width: 35vw; /* slightly smaller */
+      max-width: 35vw;
     }
     .video-container video {
       width: 100%;
       height: auto;
       display: block;
-      user-select: none;
     }
 
-    /* CAPTION below video */
     .caption {
       margin-top: 1vh;
       font-size: 0.85em;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: clip;
-      width: 40vw; /* match video */
-      max-width: 40vw;
+      overflow: visible; /* never cut off text */
+      text-overflow: unset;
+      width: 35vw;
+      max-width: 35vw;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
       user-select: none;
-      transition: width 0.3s ease;
     }
 
-    /* SOCIAL LINKS */
     footer {
       margin-top: 1vh;
       font-size: 0.55em;
@@ -189,7 +177,6 @@
     }
     footer .social-links a:hover { text-decoration: underline; }
 
-    /* TAP ANYWHERE TEXT */
     .tap-text {
       margin-top: 1vh;
       font-size: 0.55em;
@@ -210,20 +197,24 @@
       pointer-events: none;
     }
 
-    /* ====== RESPONSIVE ====== */
+    /* ✅ MOBILE: video nearly full width, caption fits */
     @media (max-width: 1024px) {
+      header {
+        margin-top: 5vh; /* allow some breathing room */
+      }
       header img {
-        max-width: 72vw; /* mobile: ~33% bigger than previous 54vw */
+        max-width: 60vw; /* smaller logo on mobile */
       }
       .video-container {
-        width: 72vw; /* bigger video so caption fits */
-        max-width: 72vw;
+        width: 95vw; /* almost edge-to-edge video */
+        max-width: 95vw;
         margin-top: 2vh;
       }
       .caption {
-        width: 72vw; /* match video width */
-        max-width: 72vw;
-        font-size: 0.8em;
+        width: 95vw;
+        max-width: 95vw;
+        font-size: 0.9em; /* slightly larger for readability */
+        white-space: normal; /* allow wrapping so it NEVER cuts */
       }
       footer {
         font-size: 0.5em;
@@ -231,33 +222,24 @@
       .tap-text {
         margin-top: 2vh;
       }
-      .archive-menu {
-        top: 10px;
-        left: 10px; /* hamburger on left on mobile */
-        right: auto;
-      }
     }
 
     @media (max-width: 400px) {
       header img {
-        max-width: 76vw; /* mobile smaller screen logo */
+        max-width: 65vw; 
       }
       .caption {
-        font-size: 0.75em;
-        width: 76vw;
-        max-width: 76vw;
-      }
-      .archive-menu {
-        top: 10px;
-        left: 10px;
-        right: auto;
+        font-size: 0.85em;
+        width: 95vw;
+        max-width: 95vw;
+        white-space: normal;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- HAMBURGER MENU -->
+  <!-- ✅ HAMBURGER MENU -->
   <div class="archive-menu" id="archiveMenu">
     <div class="hamburger" aria-label="Archive menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
     <div class="dropdown" role="menu" aria-hidden="true">
@@ -266,24 +248,24 @@
     </div>
   </div>
 
-  <!-- LOGO -->
+  <!-- ✅ LOGO -->
   <header>
     <a href="https://unseel.ie" target="_blank" rel="noopener">
       <img src="media/unseelie/blue_unseelie.jpg" alt="unseelie logo" />
     </a>
   </header>
 
-  <!-- VIDEO -->
+  <!-- ✅ VIDEO -->
   <a href="https://kud.li/unsls34" class="video-container" target="_blank" rel="noopener">
     <video autoplay muted loop playsinline>
       <source src="media/sites/apu/IBHSD_TEASER_V3.mp4" type="video/mp4" />
     </video>
   </a>
 
-  <!-- CAPTION -->
+  <!-- ✅ CAPTION -->
   <div class="caption">ஃ celebrating the timeless collective library of imagination ஃ</div>
 
-  <!-- SOCIAL LINKS -->
+  <!-- ✅ SOCIAL LINKS -->
   <footer>
     <div class="social-links">
       <a href="https://soundcloud.com/unseelie_nyc" target="_blank" rel="noopener">Soundcloud</a> ஃ
@@ -296,10 +278,10 @@
     </div>
   </footer>
 
-  <!-- TAP TEXT -->
+  <!-- ✅ TAP TEXT -->
   <div class="tap-text">click to enable sound</div>
 
-  <!-- HIDDEN SOUNDCLOUD PLAYER -->
+  <!-- ✅ HIDDEN SOUNDCLOUD PLAYER -->
   <iframe 
     id="sc-player"
     class="soundcloud-player"
