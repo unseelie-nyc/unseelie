@@ -65,12 +65,12 @@
       position: relative;
     }
 
-    /* HAMBURGER LOCKED TOP-LEFT */
+    /* HAMBURGER LOCKED TOP-RIGHT */
     .archive-menu {
       position: fixed;
       top: 10px;
-      left: 10px;
-      right: auto;
+      right: 10px;
+      left: auto;
       z-index: 9999;
       user-select: none;
     }
@@ -126,7 +126,7 @@
       z-index: 1; /* below hamburger */
     }
     header img {
-      max-width: 55vw;
+      max-width: 60.5vw; /* 10% larger than previous 55vw */
       height: auto;
       cursor: pointer;
       display: block;
@@ -153,8 +153,8 @@
       margin-top: 0.8vh;
       font-size: 1.05em;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      overflow: visible;
+      text-overflow: clip;
       max-width: 40vw;
       margin-left: auto;
       margin-right: auto;
@@ -205,16 +205,23 @@
     /* MOBILE & IPAD FIXES */
     @media (max-width: 1024px) {
       header img {
-        max-width: 69vw;
+        max-width: 74.5vw; /* 10% larger than 67.7vw */
       }
       .video-container {
-        width: 80vw;
-        max-width: 80vw;
+        width: 100vw;  /* full width on mobile/tablet */
+        max-width: 100vw;
+        margin-left: 0;
+        margin-right: 0;
       }
       .caption {
-        font-size: 0.95em;
-        max-width: 80vw;
-        width: 80vw;
+        font-size: 1em;
+        max-width: 100vw;
+        width: 100vw;
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        padding: 0 8px; /* small padding so text doesn't touch screen edges exactly */
+        box-sizing: border-box;
       }
       footer {
         font-size: 0.55em;
