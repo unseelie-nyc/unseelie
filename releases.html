@@ -6,13 +6,15 @@
 <title>unseelie discography</title>
 <!-- ✅ Favicon -->
 <link rel="icon" type="image/x-icon" href="media/unseelie/favicon.ico" />
-        <script>/* ✅ Custom cursor */
-    html, body, * {
-      cursor: url("media/unseelie/mouse.cur") 0 0, url("media/unseelie/mouse.png") 0 0, auto !important;
-    } </script>
+<script>
+  /* ✅ Custom cursor */
+  html, body, * {
+    cursor: url("media/unseelie/mouse.cur"), auto !important;
+  }
+</script>
 <style>
   body {
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
     background: #000;
     color: #eee;
     margin: 20px;
@@ -38,7 +40,9 @@
   .cover {
     width: 100%;
     padding-bottom: 100%;
-    background: url('https://via.placeholder.com/400x400?text=Cover+Image') center/cover no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   .info {
     padding: 16px;
@@ -46,7 +50,7 @@
   }
   .catalog-number {
     font-weight: bold;
-    color: #ff6f61;
+    color: #61aaff; /* changed from red to soft blue */
   }
   .artist {
     font-size: 1.1em;
@@ -67,14 +71,19 @@
 </head>
 <body>
 
-<h1>Unseelie Complete Discography</h1>
-
+  <!-- ✅ LOGO -->
+  <header>
+    <a href="https://unseel.ie" target="_blank" rel="noopener">
+      <img src="media/unseelie/blue_unseelie.jpg" alt="unseelie logo" />
+    </a>
+  </header>
+    
 <div class="catalog">
 
   <!-- Releases -->
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL001');"></div>
     <div class="info">
       <div class="catalog-number">UNSL001</div>
       <div class="artist">No Hate Is A Cold Star</div>
@@ -85,7 +94,7 @@
   </div>
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL002');"></div>
     <div class="info">
       <div class="catalog-number">UNSL002</div>
       <div class="artist">Drumloop</div>
@@ -96,7 +105,7 @@
   </div>
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL004');"></div>
     <div class="info">
       <div class="catalog-number">UNSL004</div>
       <div class="artist">Yikii & Dasychira</div>
@@ -107,7 +116,7 @@
   </div>
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL005');"></div>
     <div class="info">
       <div class="catalog-number">UNSL005</div>
       <div class="artist">Yikii & Dasychira</div>
@@ -118,7 +127,7 @@
   </div>
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL006');"></div>
     <div class="info">
       <div class="catalog-number">UNSL006</div>
       <div class="artist">Celes</div>
@@ -129,7 +138,7 @@
   </div>
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL007');"></div>
     <div class="info">
       <div class="catalog-number">UNSL007</div>
       <div class="artist">:3lON</div>
@@ -140,7 +149,7 @@
   </div>
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL008D');"></div>
     <div class="info">
       <div class="catalog-number">UNSL008D</div>
       <div class="artist">Dasychira</div>
@@ -151,7 +160,7 @@
   </div>
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL009');"></div>
     <div class="info">
       <div class="catalog-number">UNSL009</div>
       <div class="artist">Helica</div>
@@ -162,7 +171,7 @@
   </div>
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL010D');"></div>
     <div class="info">
       <div class="catalog-number">UNSL010D / UNSL010DDD</div>
       <div class="artist">galen tipton & dj galen</div>
@@ -173,7 +182,7 @@
   </div>
 
   <div class="release">
-    <div class="cover"></div>
+    <div class="cover" style="background-image: url('https://via.placeholder.com/400x400?text=UNSL010');"></div>
     <div class="info">
       <div class="catalog-number">UNSL010</div>
       <div class="artist">galen tipton & dj galen</div>
